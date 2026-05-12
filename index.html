@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wild Today — Daily Conservation Briefing</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Barlow+Condensed:wght@400;600;700&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --crimson:   #7a1a1a;
+      --crimson-lt:#9e2222;
+      --slate:     #4d7c8a;
+      --slate-lt:  #6aa3b5;
+      --near-black:#0d0d0d;
+      --off-white: #f0ece4;
+      --warm-gray: #c8c0b4;
+      --mid-gray:  #4a4540;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--near-black);
+      color: var(--off-white);
+      font-family: 'Barlow', sans-serif;
+      font-weight: 300;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* ── MASTHEAD ── */
+    .masthead {
+      position: relative;
+      border-bottom: 3px solid var(--crimson);
+      padding: 2.5rem 2rem 2rem;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .masthead::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(
+        90deg,
+        transparent,
+        transparent 120px,
+        rgba(122,26,26,0.04) 120px,
+        rgba(122,26,26,0.04) 121px
+      );
+      pointer-events: none;
+    }
+
+    .masthead-left { display: flex; flex-direction: column; gap: 0.2rem; }
+
+    .masthead-eyebrow {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 600;
+      font-size: 0.7rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--slate-lt);
+    }
+
+    .masthead-title {
+      font-family: 'Playfair Display', serif;
+      font-weight: 900;
+      font-size: clamp(2.8rem, 8vw, 5rem);
+      line-height: 0.95;
+      color: var(--off-white);
+      letter-spacing: -0.02em;
+    }
+
+    .masthead-title span {
+      color: var(--crimson-lt);
+    }
+
+    .masthead-sub {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 400;
+      font-size: 0.85rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--warm-gray);
+      margin-top: 0.4rem;
+    }
+
+    .masthead-right {
+      text-align: right;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.78rem;
+      color: var(--warm-gray);
+      line-height: 1.8;
+    }
+
+    .masthead-right a {
+      color: var(--slate-lt);
+      text-decoration: none;
+    }
+
+    .masthead-right a:hover { text-decoration: underline; }
+
+    /* ── DATE BANNER ── */
+    .date-banner {
+      background: var(--crimson);
+      padding: 0.6rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .date-banner-date {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 0.8rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+    }
+
+    .date-banner-tag {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(240,236,228,0.7);
+    }
+
+    /* ── LAYOUT ── */
+    .site-wrapper {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    /* ── BRIEFING SECTION ── */
+    .briefing-section {
+      padding: 4rem 0;
+    }
+
+    .section-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 600;
+      font-size: 0.7rem;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--slate-lt);
+      margin-bottom: 2.5rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .section-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--mid-gray);
+    }
+
+    /* ── STORY CARDS ── */
+    .stories {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .story {
+      display: grid;
+      grid-template-columns: 80px 1fr;
+      gap: 0;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+      padding: 2.2rem 0;
+      opacity: 0;
+      transform: translateY(24px);
+      animation: fadeUp 0.5s ease forwards;
+    }
+
+    .story:nth-child(1)  { animation-delay: 0.05s; }
+    .story:nth-child(2)  { animation-delay: 0.10s; }
+    .story:nth-child(3)  { animation-delay: 0.15s; }
+    .story:nth-child(4)  { animation-delay: 0.20s; }
+    .story:nth-child(5)  { animation-delay: 0.25s; }
+    .story:nth-child(6)  { animation-delay: 0.30s; }
+    .story:nth-child(7)  { animation-delay: 0.35s; }
+    .story:nth-child(8)  { animation-delay: 0.40s; }
+
+    @keyframes fadeUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .story-number {
+      font-family: 'Playfair Display', serif;
+      font-weight: 900;
+      font-size: 4rem;
+      line-height: 1;
+      padding-top: 0.1rem;
+      user-select: none;
+      transition: color 0.2s;
+    }
+
+    /* alternating number colors to match your social cards */
+    .story:nth-child(odd)  .story-number { color: var(--crimson-lt); }
+    .story:nth-child(even) .story-number { color: var(--slate); }
+
+    .story:hover .story-number { opacity: 0.6; }
+
+    .story-body { padding-left: 0.5rem; }
+
+    .story-tag {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--warm-gray);
+      margin-bottom: 0.5rem;
+    }
+
+    .story-text {
+      font-size: 1.05rem;
+      line-height: 1.75;
+      color: var(--off-white);
+      font-weight: 300;
+    }
+
+    .story-text strong {
+      font-weight: 500;
+      color: #fff;
+    }
+
+    /* ── CLOSING NOTE ── */
+    .closing-note {
+      margin-top: 3rem;
+      padding: 2rem;
+      border-left: 3px solid var(--crimson);
+      background: rgba(122,26,26,0.1);
+      font-size: 0.95rem;
+      color: var(--warm-gray);
+      font-style: italic;
+    }
+
+    .closing-note a {
+      color: var(--slate-lt);
+      text-decoration: none;
+    }
+
+    .closing-note a:hover { text-decoration: underline; }
+
+    /* ── DIVIDER ── */
+    .section-divider {
+      border: none;
+      border-top: 1px solid var(--mid-gray);
+      margin: 0;
+    }
+
+    /* ── ARCHIVE ── */
+    .archive-section {
+      padding: 3.5rem 0 5rem;
+    }
+
+    .archive-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1px;
+      background: var(--mid-gray);
+      border: 1px solid var(--mid-gray);
+    }
+
+    .archive-item {
+      background: var(--near-black);
+      padding: 1.4rem 1.6rem;
+      text-decoration: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+      transition: background 0.18s;
+    }
+
+    .archive-item:hover { background: #1a1614; }
+
+    .archive-item-date {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.68rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--warm-gray);
+    }
+
+    .archive-item-count {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: 1.6rem;
+      color: var(--crimson-lt);
+      line-height: 1;
+    }
+
+    .archive-item-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.75rem;
+      color: var(--warm-gray);
+      letter-spacing: 0.05em;
+    }
+
+    .archive-cta {
+      margin-top: 2rem;
+      text-align: center;
+    }
+
+    .btn {
+      display: inline-block;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 0.78rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      padding: 0.85rem 2.2rem;
+      text-decoration: none;
+      transition: all 0.18s;
+      cursor: pointer;
+      border: none;
+    }
+
+    .btn-crimson {
+      background: var(--crimson);
+      color: var(--off-white);
+    }
+
+    .btn-crimson:hover { background: var(--crimson-lt); }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--off-white);
+      border: 1px solid var(--mid-gray);
+    }
+
+    .btn-outline:hover {
+      border-color: var(--slate-lt);
+      color: var(--slate-lt);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--mid-gray);
+      padding: 2.5rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .footer-brand {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: 1.1rem;
+    }
+
+    .footer-brand span { color: var(--crimson-lt); }
+
+    .footer-links {
+      display: flex;
+      gap: 1.8rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--warm-gray);
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+
+    .footer-links a:hover { color: var(--slate-lt); }
+
+    .footer-copy {
+      font-size: 0.72rem;
+      color: var(--mid-gray);
+      font-family: 'Barlow Condensed', sans-serif;
+      letter-spacing: 0.08em;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 600px) {
+      .story { grid-template-columns: 56px 1fr; }
+      .story-number { font-size: 2.8rem; }
+      .masthead { padding: 1.8rem 1.2rem 1.5rem; }
+      .date-banner { padding: 0.5rem 1.2rem; }
+      footer { flex-direction: column; gap: 1rem; }
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <!-- ═══ MASTHEAD ═══ -->
+
+  <header class="masthead">
+    <div class="masthead-left">
+      <div class="masthead-eyebrow">From WildTomorrow</div>
+      <div class="masthead-title">Wild <span>Today</span></div>
+      <div class="masthead-sub">Daily Conservation Briefing</div>
+    </div>
+    <div class="masthead-right">
+      <div><a href="mailto:news@wild-tomorrow.com">news@wild-tomorrow.com</a></div>
+      <div><a href="https://wild-tomorrow.com" target="_blank">wild-tomorrow.com</a></div>
+    </div>
+  </header>
+
+  <!-- ═══ DATE BANNER ═══ -->
+
+  <div class="date-banner">
+    <div class="date-banner-date">Tuesday, May 12, 2026</div>
+    <div class="date-banner-tag">8 stories today &nbsp;·&nbsp; By Katie Byers</div>
+  </div>
+
+  <!-- ═══ MAIN CONTENT ═══ -->
+
+  <main class="site-wrapper">
+
+```
+<!-- ── TODAY'S BRIEFING ── -->
+<!-- =====================================================================
+     HOW TO UPDATE THIS PAGE:
+     1. Change the date-banner date and story count above.
+     2. Replace each <p class="story-text"> below with your new story text.
+     3. Add or remove <article class="story"> blocks to match story count.
+     4. Update the closing note if needed.
+     That's it. No other changes required.
+====================================================================== -->
+
+<section class="briefing-section">
+  <div class="section-label">Today's Briefing</div>
+
+  <div class="stories">
+
+    <article class="story">
+      <div class="story-number">1</div>
+      <div class="story-body">
+        <div class="story-tag">Oceans &amp; International Law</div>
+        <p class="story-text">A new global legal regime for the high seas is now in force, with the <strong>High Seas Treaty (BBNJ Agreement)</strong> entering into effect on January 17, 2026 after more than 60 ratifications, creating the first comprehensive framework to conserve biodiversity in areas beyond national jurisdiction, which cover roughly 60% of the ocean. Ocean-focused NGOs are stressing that 2026–2027 will be decisive as countries move from signatures to implementation: designing high seas marine protected areas, agreeing rules for environmental impact assessments, and deciding how benefits from marine genetic resources will be shared.</p>
+      </div>
+    </article>
+
+    <article class="story">
+      <div class="story-number">2</div>
+      <div class="story-body">
+        <div class="story-tag">Endangered Species Act</div>
+        <p class="story-text">The Trump administration's use of the Endangered Species Act's rarely convened <strong>Endangered Species Committee ("God Squad")</strong> to exempt Gulf of Mexico oil and gas drilling from ESA protections is now a live flashpoint, with the committee granting an exemption that directly threatens critically endangered Rice's whales, of which only about 50–51 individuals remain. Parallel to that, a major ESA "Amendments Act" intended to codify habitat rollbacks and economic/security tests for listings had its planned Earth Day House vote abruptly canceled after some Republicans from Gulf tourism districts balked, signaling internal fractures over just how far to weaken ESA protections.</p>
+      </div>
+    </article>
+
+    <article class="story">
+      <div class="story-number">3</div>
+      <div class="story-body">
+        <div class="story-tag">Regulatory Watch</div>
+        <p class="story-text">Regulatory fights over how the ESA is implemented are intensifying: proposed rules from the <strong>Fish and Wildlife Service and National Marine Fisheries Service</strong> would change how species are listed or delisted, revise critical habitat designations, and roll back the blanket 4(d) rule that automatically grants threatened species full ESA protections, with final rules expected this year and litigation seen as inevitable. At the same time, a separate proposed rule would rescind the longstanding definition of "harm" that includes habitat destruction, undermining a core mechanism by which ESA has addressed habitat loss as a driver of extinction.</p>
+      </div>
+    </article>
+
+    <article class="story">
+      <div class="story-number">4</div>
+      <div class="story-body">
+        <div class="story-tag">Wildlife Trafficking</div>
+        <p class="story-text">Online-enabled wildlife trafficking continues to look more like a structured global marketplace than a fringe crime: a new analysis finds that <strong>Facebook hosted more than three-quarters of 22,000 wild animals and parts</strong> known to be sold online between April 2024 and March 2026, with about 84% of animals for sale banned from cross-border trade and more than half endangered or critically endangered. Interpol's late-2025 operation spanning 134 countries seized around 30,000 live animals and identified roughly 1,100 suspected traffickers, while wildlife-crime investigators are pushing harder on corruption as the key "enabler" following a new UN resolution on environmental crime under the anti-corruption convention.</p>
+      </div>
+    </article>
+
+    <article class="story">
+      <div class="story-number">5</div>
+      <div class="story-body">
+        <div class="story-tag">Enforcement</div>
+        <p class="story-text">On the enforcement side, California announced it has disrupted several major wildlife trafficking operations, seizing hundreds of illegal products including <strong>ivory, rhino horn, walrus tusk, saiga antelope items, suspected bear gall bladders, and turtle shells</strong> tied to an international network. Officials are explicitly asking the public to report suspected trafficking through the state's CalTIP hotline and text system, signaling a push to crowdsource intelligence on wildlife crime.</p>
+      </div>
+    </article>
+
+    <article class="story">
+      <div class="story-number">6</div>
+      <div class="story-body">
+        <div class="story-tag">Conservation Finance</div>
+        <p class="story-text">Conservation finance and forest policy are moving in tandem: supporters of the <strong>"Fix Our Forests Act"</strong> are highlighting that in 2026, about $804.8 million of nearly $1.3 billion distributed to state conservation and access programs came from federal excise taxes on firearms and ammunition, part of more than $31 billion (inflation-adjusted) contributed to state wildlife work since 1937 under the Pittman–Robertson system. The Act itself is framed as a way to reduce wildfire risk and restore habitat, but also cements the political link between hunting/shooting industries and public conservation budgets.</p>
+      </div>
+    </article>
+
+    <article class="story">
+      <div class="story-number">7</div>
+      <div class="story-body">
+        <div class="story-tag">Global Biodiversity</div>
+        <p class="story-text">Globally, the <strong>Kunming–Montreal Global Biodiversity Framework</strong> (the "Paris Agreement for biodiversity") is entering its accountability phase, with governments beginning the first global review of progress toward halting and reversing biodiversity loss by 2030. A 2026 "Global Horizon Scan" of emerging issues highlights new AI tools, changes in global food demand, shifts in ocean dynamics, and evolving forest finance as under-appreciated factors likely to shape conservation over the next decade.</p>
+      </div>
+    </article>
+
+    <article class="story">
+      <div class="story-number">8</div>
+      <div class="story-body">
+        <div class="story-tag">Policy &amp; Legislation</div>
+        <p class="story-text">Nationally, India has launched a <strong>National Red List Roadmap and "Vision 2025"</strong> to strengthen biodiversity assessment and conservation, aiming to systematize threat evaluations across its rich fauna and flora. In the U.S., a bipartisan "Wildlife Corridors and Habitat Connectivity Conservation Act of 2026" has been introduced to create a National Wildlife Corridor System on federal lands and waters, with corridors nominated by states, Tribes, and local entities and certain federal lands within designated corridors withdrawn from new mining and mineral leasing.</p>
+      </div>
+    </article>
+
+  </div><!-- /stories -->
+
+  <div class="closing-note">
+    If you'd like a deeper dive into any of these stories, <a href="mailto:news@wild-tomorrow.com">send a message</a> or comment on <a href="https://wildtomorrow.substack.com" target="_blank">the Substack post</a>. I do my best to cover requests and am happy to work on stories my readers want to read.
+  </div>
+
+</section>
+
+<hr class="section-divider" />
+
+<!-- ── ARCHIVE ── -->
+<!-- To add a past edition: copy one <a class="archive-item"> block,
+     update the date, story count, and href link. -->
+<section class="archive-section">
+  <div class="section-label">Past Editions</div>
+
+  <div class="archive-grid">
+
+    <a class="archive-item" href="#">
+      <div class="archive-item-date">May 12, 2026</div>
+      <div class="archive-item-count">8</div>
+      <div class="archive-item-label">stories · Current edition</div>
+    </a>
+
+    <!-- Add past editions below as you build the archive:
+    <a class="archive-item" href="#">
+      <div class="archive-item-date">May 11, 2026</div>
+      <div class="archive-item-count">7</div>
+      <div class="archive-item-label">stories</div>
+    </a>
+    -->
+
+  </div>
+
+  <div class="archive-cta">
+    <a href="https://wildtomorrow.substack.com" target="_blank" class="btn btn-outline">
+      Full Archive on Substack
+    </a>
+  </div>
+
+</section>
+```
+
+  </main><!-- /site-wrapper -->
+
+  <!-- ═══ FOOTER ═══ -->
+
+  <footer>
+    <div class="footer-brand">Wild <span>Today</span></div>
+    <nav class="footer-links">
+      <a href="https://wild-tomorrow.com">WildTomorrow</a>
+      <a href="https://wildtomorrow.substack.com" target="_blank">Substack</a>
+      <a href="mailto:news@wild-tomorrow.com">Contact</a>
+    </nav>
+    <div class="footer-copy">&copy; 2026 Katie Byers / WildTomorrow</div>
+  </footer>
+
+</body>
+</html>
