@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wild Today — Daily Conservation Briefing</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Barlow+Condensed:wght@400;600;700&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --crimson:   #7a1a1a;
+      --crimson-lt:#9e2222;
+      --slate:     #4d7c8a;
+      --slate-lt:  #6aa3b5;
+      --near-black:#0d0d0d;
+      --off-white: #f0ece4;
+      --warm-gray: #c8c0b4;
+      --mid-gray:  #4a4540;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--near-black);
+      color: var(--off-white);
+      font-family: 'Barlow', sans-serif;
+      font-weight: 300;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* ── MASTHEAD ── */
+    .masthead {
+      position: relative;
+      border-bottom: 3px solid var(--crimson);
+      padding: 2.5rem 2rem 2rem;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .masthead::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(
+        90deg,
+        transparent,
+        transparent 120px,
+        rgba(122,26,26,0.04) 120px,
+        rgba(122,26,26,0.04) 121px
+      );
+      pointer-events: none;
+    }
+
+    .masthead-left { display: flex; flex-direction: column; gap: 0.2rem; }
+
+    .masthead-eyebrow {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 600;
+      font-size: 0.7rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--slate-lt);
+    }
+
+    .masthead-title {
+      font-family: 'Playfair Display', serif;
+      font-weight: 900;
+      font-size: clamp(2.8rem, 8vw, 5rem);
+      line-height: 0.95;
+      color: var(--off-white);
+      letter-spacing: -0.02em;
+    }
+
+    .masthead-title span {
+      color: var(--crimson-lt);
+    }
+
+    .masthead-sub {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 400;
+      font-size: 0.85rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--warm-gray);
+      margin-top: 0.4rem;
+    }
+
+    .masthead-right {
+      text-align: right;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.78rem;
+      color: var(--warm-gray);
+      line-height: 1.8;
+    }
+
+    .masthead-right a {
+      color: var(--slate-lt);
+      text-decoration: none;
+    }
+
+    .masthead-right a:hover { text-decoration: underline; }
+
+    /* ── DATE BANNER ── */
+    .date-banner {
+      background: var(--crimson);
+      padding: 0.6rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .date-banner-date {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 0.8rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+    }
+
+    .date-banner-tag {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(240,236,228,0.7);
+    }
+
+    /* ── LAYOUT ── */
+    .site-wrapper {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    /* ── BRIEFING SECTION ── */
+    .briefing-section {
+      padding: 4rem 0;
+    }
+
+    .section-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 600;
+      font-size: 0.7rem;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--slate-lt);
+      margin-bottom: 2.5rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .section-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--mid-gray);
+    }
+
+    /* ── STORY CARDS ── */
+    .stories {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .story {
+      display: grid;
+      grid-template-columns: 80px 1fr;
+      gap: 0;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+      padding: 2.2rem 0;
+      opacity: 0;
+      transform: translateY(24px);
+      animation: fadeUp 0.5s ease forwards;
+    }
+
+    .story:nth-child(1)  { animation-delay: 0.05s; }
+    .story:nth-child(2)  { animation-delay: 0.10s; }
+    .story:nth-child(3)  { animation-delay: 0.15s; }
+    .story:nth-child(4)  { animation-delay: 0.20s; }
+    .story:nth-child(5)  { animation-delay: 0.25s; }
+    .story:nth-child(6)  { animation-delay: 0.30s; }
+    .story:nth-child(7)  { animation-delay: 0.35s; }
+    .story:nth-child(8)  { animation-delay: 0.40s; }
+
+    @keyframes fadeUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .story-number {
+      font-family: 'Playfair Display', serif;
+      font-weight: 900;
+      font-size: 4rem;
+      line-height: 1;
+      padding-top: 0.1rem;
+      user-select: none;
+      transition: color 0.2s;
+    }
+
+    /* alternating number colors to match your social cards */
+    .story:nth-child(odd)  .story-number { color: var(--crimson-lt); }
+    .story:nth-child(even) .story-number { color: var(--slate); }
+
+    .story:hover .story-number { opacity: 0.6; }
+
+    .story-body { padding-left: 0.5rem; }
+
+    .story-tag {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--warm-gray);
+      margin-bottom: 0.5rem;
+    }
+
+    .story-text {
+      font-size: 1.05rem;
+      line-height: 1.75;
+      color: var(--off-white);
+      font-weight: 300;
+    }
+
+    .story-text strong {
+      font-weight: 500;
+      color: #fff;
+    }
+
+    /* ── CLOSING NOTE ── */
+    .closing-note {
+      margin-top: 3rem;
+      padding: 2rem;
+      border-left: 3px solid var(--crimson);
+      background: rgba(122,26,26,0.1);
+      font-size: 0.95rem;
+      color: var(--warm-gray);
+      font-style: italic;
+    }
+
+    .closing-note a {
+      color: var(--slate-lt);
+      text-decoration: none;
+    }
+
+    .closing-note a:hover { text-decoration: underline; }
+
+    /* ── DIVIDER ── */
+    .section-divider {
+      border: none;
+      border-top: 1px solid var(--mid-gray);
+      margin: 0;
+    }
+
+    /* ── ARCHIVE ── */
+    .archive-section {
+      padding: 3.5rem 0 5rem;
+    }
+
+    .archive-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1px;
+      background: var(--mid-gray);
+      border: 1px solid var(--mid-gray);
+    }
+
+    .archive-item {
+      background: var(--near-black);
+      padding: 1.4rem 1.6rem;
+      text-decoration: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+      transition: background 0.18s;
+    }
+
+    .archive-item:hover { background: #1a1614; }
+
+    .archive-item-date {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.68rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--warm-gray);
+    }
+
+    .archive-item-count {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: 1.6rem;
+      color: var(--crimson-lt);
+      line-height: 1;
+    }
+
+    .archive-item-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.75rem;
+      color: var(--warm-gray);
+      letter-spacing: 0.05em;
+    }
+
+    .archive-cta {
+      margin-top: 2rem;
+      text-align: center;
+    }
+
+    .btn {
+      display: inline-block;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 0.78rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      padding: 0.85rem 2.2rem;
+      text-decoration: none;
+      transition: all 0.18s;
+      cursor: pointer;
+      border: none;
+    }
+
+    .btn-crimson {
+      background: var(--crimson);
+      color: var(--off-white);
+    }
+
+    .btn-crimson:hover { background: var(--crimson-lt); }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--off-white);
+      border: 1px solid var(--mid-gray);
+    }
+
+    .btn-outline:hover {
+      border-color: var(--slate-lt);
+      color: var(--slate-lt);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--mid-gray);
+      padding: 2.5rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .footer-brand {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: 1.1rem;
+    }
+
+    .footer-brand span { color: var(--crimson-lt); }
+
+    .footer-links {
+      display: flex;
+      gap: 1.8rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--warm-gray);
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+
+    .footer-links a:hover { color: var(--slate-lt); }
+
+    .footer-copy {
+      font-size: 0.72rem;
+      color: var(--mid-gray);
+      font-family: 'Barlow Condensed', sans-serif;
+      letter-spacing: 0.08em;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 600px) {
+      .story { grid-template-columns: 56px 1fr; }
+      .story-number { font-size: 2.8rem; }
+      .masthead { padding: 1.8rem 1.2rem 1.5rem; }
+      .date-banner { padding: 0.5rem 1.2rem; }
+      footer { flex-direction: column; gap: 1rem; }
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <!-- ═══ MASTHEAD ═══ -->
+
+  <header class="masthead">
+    <div class="masthead-left">
+      <div class="masthead-eyebrow">From WildTomorrow</div>
+      <div class="masthead-title">Wild <span>Today</span></div>
+      <div class="masthead-sub">Daily Conservation Briefing</div>
+    </div>
+    <div class="masthead-right">
+      <div><a href="mailto:news@wild-tomorrow.com">news@wild-tomorrow.com</a></div>
+      <div><a href="https://wild-tomorrow.com" target="_blank">wild-tomorrow.com</a></div>
+    </div>
+  </header>
+
+  <!-- ═══ DATE BANNER ═══ -->
+
+  <div class="date-banner">
+    <div class="date-banner-date">Wednesday, May 13, 2026</div>
+    <div class="date-banner-tag">6 stories today · By Katie Byers</div>
+  </div>
+
+  <!-- ═══ MAIN CONTENT ═══ -->
+
+  <main class="site-wrapper">
+
+```
+<!-- ── TODAY'S BRIEFING ── -->
+<!-- =====================================================================
+     HOW TO UPDATE THIS PAGE:
+     1. Change the date-banner date and story count above.
+     2. Replace each <p class="story-text"> below with your new story text.
+     3. Add or remove <article class="story"> blocks to match story count.
+     4. Update the closing note if needed.
+     That's it. No other changes required.
+====================================================================== -->
+
+<section class="briefing-section">
+  <div class="section-label">Today's Briefing</div>
+
+  <div class="stories">
+
+    <article class="story">
+      <div class="story-number">1</div>
+      <div class="story-body">
+        <div class="story-tag">Rescission of BLM Public Lands Rule</div>
+        <p class="story-text">The <strong>U.S. Department of the Interior</strong> has rescinded the <strong>Bureau of Land Management’s Public Lands Rule,</strong> which had required the agency to treat conservation as on par with extraction, grazing, and other uses on roughly 245 million acres of public lands. Advocacy groups emphasize that the rule had been a rare attempt to prioritize ecosystem health and habitat connectivity, and its cancellation opens the door for expanded drilling, mining, and other development on tens of millions of acres, including 13.5 million acres in New Mexico alone. This move fits into a broader deregulatory agenda under the current Trump administration, including attempts to narrow environmental review under the <strong>National Environmental Policy Act (NEPA)</strong> and weaken implementation of the Endangered Species Act (ESA). Legal analysts argue that allowing economic and national security considerations to shape which species and habitats receive protection may violate the ESA’s requirement to base listing and critical habitat decisions solely on scientific status, potentially triggering litigation.</p>
+      </div>
+    </article>
+
+    <article class="story">
+      <div class="story-number">2</div>
+      <div class="story-body">
+        <div class="story-tag">State-level conservation fills a federal vacuum</div>
+        <p class="story-text">With federal agencies cutting budgets and rolling back environmental programs, conservation groups expect most policy momentum in 2026 to come from U.S. states. <strong>The National Caucus of Environmental Legislators</strong> reports that legislatures are advancing bills on data-center water and energy transparency, residential solar access, and habitat connectivity, including wildlife crossings to reduce the roughly two million annual vehicle collisions with animals. Examples include state investments in wildlife corridors and road-crossing structures, which both reduce human–wildlife collisions and maintain migration routes for large mammals. At the same time, state-level nitrate data from volunteer monitoring in Iowa show that many surface waters exceed federal drinking-water standards, underscoring the extent to which pollution and ecological degradation are still externalized onto local communities.</p>
+      </div>
+    </article>
+
+    <article class="story">
+      <div class="story-number">3</div>
+      <div class="story-body">
+        <div class="story-tag">Biodiversity loss as a systemic financial risk</div>
+        <p class="story-text">A recent UNESCO-backed report emphasizes that all businesses depend on “nature’s contributions” – raw materials, water regulation, flood protection, cultural services – yet most firms neither pay for the full cost of their ecological damage nor receive meaningful incentives for positive stewardship. The report warns that environmentally harmful subsidies and short-term profit models are accelerating biodiversity loss and pushing ecosystems toward tipping points that could undermine long-term economic stability. This framing aligns biodiversity with other systemic financial risks like climate change, suggesting that future regulation and investor pressure may target nature-related risk disclosure, subsidy reform, and new financial mechanisms for biodiversity protection. This opens questions about which industries and subsidy regimes are most responsible for “profiting off extinction,” and how conservation finance tools are being used or abused.</p>
+      </div>
+    </article>
+
+    <article class="story">
+      <div class="story-number">4</div>
+      <div class="story-body">
+        <div class="story-tag">2026 Global Horizon Scan</div>
+        <p class="story-text">The 2026 Global Horizon Scan in Trends in Ecology & Evolution identifies 15 emerging issues likely to shape biodiversity conservation in the next decade. Highlights include: <strong>New low-power AI tools (TinyML devices, optical AI chips) that could enable real-time biodiversity monitoring in remote landscapes without continuous internet or high energy demand | Expansion of digital twins of ecosystems, with potential benefits for scenario planning but also risks if models substitute for on-the-ground protection | Potential biodiversity harm from emerging technologies and practices such as fibre-optic drone cables, novel chemical applications in plant development, and the development of food products from plastic waste | Biophysical shifts in the Southern Ocean and ecological risks from deep-sea mining, which could damage poorly understood deep-water ecosystems.</strong> The horizon scan underscores that technological and economic innovations can either help or hurt biodiversity, depending on governance, equity, and whose interests they serve.</p>
+      </div>
+    </article>
+
+    <article class="story">
+      <div class="story-number">5</div>
+      <div class="story-body">
+        <div class="story-tag">“The planet is healing” narratives and conservation wins</div>
+        <p class="story-text">Mainstream coverage ahead of Earth Day 2026 has highlighted several environmental “wins,” from species recoveries to new treaties and infrastructure. Reported gains include: Rebounds in multiple sea turtle species, including green turtles, whose IUCN Red List status was reportedly downgraded from endangered to least concern after decades of coordinated conservation efforts | Strong returns of Central California coast coho salmon in the Russian River watershed, with more than 30,000 adult coho in the 2024–2025 spawning season compared to 15,000 in the previous record year, signaling the benefits of river restoration | Reintroductions of Przewalski’s horses to Kazakhstan and Mongolia after near-extinction in the 1960s | The High Seas Biodiversity Treaty’s entry into force, potentially providing new tools to protect marine biodiversity in areas beyond national jurisdiction | National campaigns such as Ethiopia’s tree-planting drive (aiming at tens of billions of trees by the end of 2026), large-scale wildlife crossings like Colorado’s I‑25 Greenland overpass, and bans on fur farming in Poland and male chick culling in Italy. <strong>These stories are often framed as proof that “the planet is healing,” yet they coexist with accelerating climate risks, sea-level rise, and habitat loss, suggesting a need for more critical scrutiny of which wins are durable, which are symbolic, and which may mask ongoing decline.</strong></p>
+      </div>
+    </article>
+
+    <article class="story">
+      <div class="story-number">6</div>
+      <div class="story-body">
+        <div class="story-tag">Deregulation of endangered species protections</div>
+        <p class="story-text">Separate from the BLM rule, legal scholars and conservation advocates continue to track proposed regulatory changes to the U.S. Endangered Species Act that would: Allow the Fish and Wildlife Service to weigh economic and national-security factors in listing and critical-habitat decisions | Remove default protections for newly listed threatened species, leaving them with no automatic safeguards unless species-specific rules are issued | Narrow what counts as “harm” to a listed species by excluding some forms of habitat modification. <strong>Critics argue that these changes invert the ESA’s science-first mandate and will delay or block protections for species like grizzly bears and monarch butterflies, effectively legalizing forms of habitat destruction that would previously have been prohibited.</strong></p>
+      </div>
+    </article>
+
+ 
+
+  </div><!-- /stories -->
+
+  <div class="closing-note">
+    If you'd like a deeper dive into any of these stories, <a href="mailto:news@wild-tomorrow.com">send a message</a> or comment on <a href="https://wildtomorrow.substack.com" target="_blank">the Substack post</a>. I do my best to cover requests and am happy to work on stories my readers want to read.
+  </div>
+
+</section>
+
+<hr class="section-divider" />
+
+<!-- ── ARCHIVE ── -->
+<!-- To add a past edition: copy one <a class="archive-item"> block,
+     update the date, story count, and href link. -->
+<section class="archive-section">
+  <div class="section-label">Past Editions</div>
+
+  <div class="archive-grid">
+
+<a class="archive-item" href="2026-05-13">
+      <div class="archive-item-date">May 13, 2026</div>
+      <div class="archive-item-count">6</div>
+      <div class="archive-item-label">stories · Current edition</div>
+    </a>
+
+    <a class="archive-item" href="2026-05-12">
+      <div class="archive-item-date">May 12, 2026</div>
+      <div class="archive-item-count">8</div>
+      <div class="archive-item-label">stories</div>
+    </a>
+
+    <!-- Add past editions below as you build the archive:
+    <a class="archive-item" href="2026-05-12">
+      <div class="archive-item-date">May 12, 2026</div>
+      <div class="archive-item-count">8</div>
+      <div class="archive-item-label">stories</div>
+    </a>
+    -->
+
+  </div>
+
+  <div class="archive-cta">
+    <a href="https://wildtomorrow.substack.com" target="_blank" class="btn btn-outline">
+      Full Archive on Substack
+    </a>
+  </div>
+
+</section>
+```
+
+  </main><!-- /site-wrapper -->
+
+  <!-- ═══ FOOTER ═══ -->
+
+  <footer>
+    <div class="footer-brand">Wild <span>Today</span></div>
+    <nav class="footer-links">
+      <a href="https://wild-tomorrow.com">WildTomorrow</a>
+      <a href="https://wildtomorrow.substack.com" target="_blank">Substack</a>
+      <a href="mailto:news@wild-tomorrow.com">Contact</a>
+    </nav>
+    <div class="footer-copy">&copy; 2026 Katie Byers / WildTomorrow</div>
+  </footer>
+
+</body>
+</html>
+
