@@ -120,33 +120,6 @@ Visitors can then click any past date and read exactly what was published that d
 
 -----
 
-## One-Time Setup: Connecting briefing.wild-tomorrow.com
-
-Do this once and you never have to touch it again.
-
-### Step 1: GitHub Pages
-
-1. Go to your repository → **Settings → Pages**
-1. Under “Source,” select `main` branch and `/ (root)` folder
-1. Click Save
-1. Under “Custom domain,” type `briefing.wild-tomorrow.com`
-1. Click Save
-1. Check “Enforce HTTPS” once it appears
-
-### Step 2: Cloudflare DNS
-
-1. Log into Cloudflare → your wild-tomorrow.com zone
-1. Go to **DNS → Add Record**
-1. Type: `CNAME`
-1. Name: `briefing`
-1. Target: `YOURGITHUBUSERNAME.github.io` (replace with your actual GitHub username)
-1. Proxy status: **DNS only** (gray cloud, not orange) — GitHub Pages requires this
-1. Click Save
-
-Within a few minutes (sometimes up to an hour), `briefing.wild-tomorrow.com` will be live.
-
------
-
 ## File Structure
 
 ```
