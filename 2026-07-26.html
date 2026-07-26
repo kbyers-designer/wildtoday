@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wild Today — Daily Conservation Briefing</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Barlow+Condensed:wght@400;600;700&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --crimson:   #7a1a1a;
+      --crimson-lt:#9e2222;
+      --slate:     #4d7c8a;
+      --slate-lt:  #6aa3b5;
+      --near-black:#0d0d0d;
+      --off-white: #f0ece4;
+      --warm-gray: #c8c0b4;
+      --mid-gray:  #4a4540;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--near-black);
+      color: var(--off-white);
+      font-family: 'Barlow', sans-serif;
+      font-weight: 300;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    .masthead {
+      position: relative;
+      border-bottom: 3px solid var(--crimson);
+      padding: 2.5rem 2rem 2rem;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .masthead::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(
+        90deg,
+        transparent,
+        transparent 120px,
+        rgba(122,26,26,0.04) 120px,
+        rgba(122,26,26,0.04) 121px
+      );
+      pointer-events: none;
+    }
+
+    .masthead-left { display: flex; flex-direction: column; gap: 0.2rem; }
+    .masthead-eyebrow {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 600;
+      font-size: 0.7rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--slate-lt);
+    }
+
+    .masthead-title {
+      font-family: 'Playfair Display', serif;
+      font-weight: 900;
+      font-size: clamp(2.8rem, 8vw, 5rem);
+      line-height: 0.95;
+      color: var(--off-white);
+      letter-spacing: -0.02em;
+    }
+
+    .masthead-title span { color: var(--crimson-lt); }
+    .masthead-sub {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 400;
+      font-size: 0.85rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--warm-gray);
+      margin-top: 0.4rem;
+    }
+
+    .masthead-right {
+      text-align: right;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.78rem;
+      color: var(--warm-gray);
+      line-height: 1.8;
+    }
+
+    .content { max-width: 1000px; margin: 0 auto; padding: 0 2rem; }
+
+    .stories { display: flex; flex-direction: column; gap: 3.5rem; padding: 3rem 0; }
+
+    .story {
+      display: grid;
+      grid-template-columns: 3.5rem 1fr;
+      gap: 1.5rem;
+      align-items: flex-start;
+    }
+
+    .story-number {
+      font-family: 'Playfair Display', serif;
+      font-weight: 900;
+      font-size: 4rem;
+      line-height: 1;
+      padding-top: 0.1rem;
+      user-select: none;
+    }
+
+    .story:nth-child(odd) .story-number { color: var(--crimson-lt); }
+    .story:nth-child(even) .story-number { color: var(--slate); }
+
+    .story-body { padding-left: 0.5rem; }
+    .story-tag {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--warm-gray);
+      margin-bottom: 0.5rem;
+    }
+
+    .story-text {
+      font-size: 1.05rem;
+      line-height: 1.75;
+      color: var(--off-white);
+      font-weight: 300;
+    }
+
+    .story-text strong {
+      font-weight: 500;
+      color: #fff;
+    }
+
+    .closing-note {
+      margin-top: 3rem;
+      padding: 2rem;
+      border-left: 3px solid var(--crimson);
+      background: rgba(122,26,26,0.1);
+      font-size: 0.95rem;
+      color: var(--warm-gray);
+      font-style: italic;
+    }
+
+    .footer { padding: 3rem 0; text-align: center; color: var(--warm-gray); font-size: 0.85rem; }
+  </style>
+</head>
+<body>
+  <header class="masthead">
+    <div class="masthead-left">
+      <div class="masthead-eyebrow">Daily Conservation Briefing</div>
+      <h1 class="masthead-title">Wild<span>Today</span></h1>
+      <div class="masthead-sub">Stories That Matter for Our Living World</div>
+    </div>
+    <div class="masthead-right">
+      2026-07-26
+    </div>
+  </header>
+
+  <main class="content">
+    <section class="stories">
+      <article class="story">
+        <div class="story-number">1</div>
+        <div class="story-body">
+          <div class="story-tag">Habitat Reconnection - Europe</div>
+          <p class="story-text">The <strong>Royal Society for the Protection of Birds (RSPB)</strong> has acquired 96 hectares of upland landscape in <strong>Carmarthenshire, Wales</strong>, reconnecting two separated nature reserves for the first time in 60 years. The purchase of <strong>Gallt-y-bere</strong>, a "vital missing link" along the <strong>River Tywi</strong>, will allow wildlife including rare <strong>pied flycatchers</strong>, endangered <strong>hen harriers</strong>, and <strong>wood warblers</strong> to move freely across the landscape, building stronger, more diverse ecosystems. The area is home to internationally important <strong>Atlantic oak woodlands</strong> (Celtic rainforests), ancient forests, and peat bogs that support species found nowhere else in Britain. The project demonstrates how habitat reconnection can restore resilience for rare birds and forests facing an uncertain climate future.</p>
+        </div>
+      </article>
+      <article class="story">
+        <div class="story-number">2</div>
+        <div class="story-body">
+          <div class="story-tag">Species Endangerment - Africa</div>
+          <p class="story-text">The <strong>desert rain frog</strong> (Breviceps macrops), famous for its squeaky defensive call that went viral online, has been added to the global list of species at high risk of extinction. Found only in a narrow 10-kilometer strip of sand dunes in <strong>Namibia and South Africa</strong>, the frog is threatened by <strong>diamond mining operations</strong> and planned energy projects that fragment its already-restricted habitat. Scientists warn that the species' extreme habitat specificity means it has nowhere to relocate if its home is transformed, and expect populations to decline by 20% over the next two decades. The frog's cute appearance paradoxically increases threats from the illegal pet trade, though habitat loss remains the primary danger. Conservation experts emphasize that habitat restoration after mining operations end will be critical to the species' survival.</p>
+        </div>
+      </article>
+      <article class="story">
+        <div class="story-number">3</div>
+        <div class="story-body">
+          <div class="story-tag">Marine & Blue Carbon - International</div>
+          <p class="story-text"><strong>Kenya</strong> has unveiled a landmark <strong>Blue Carbon Ecosystems Implementation and Investment Plan</strong>, the nation's first comprehensive strategy for protecting coastal ecosystems that sequester carbon and support millions of people. Launched at the June 2026 <strong>Our Ocean Conference</strong>, the plan commits Kenya to protect 60% of its 60,000 hectares of healthy <strong>mangroves</strong>, restore three-quarters of degraded mangrove area, and safeguard at least 20,000 hectares of <strong>seagrass beds</strong> by 2035. <strong>Mangroves</strong> act as fish nurseries and storm barriers while storing carbon at rates exceeding terrestrial forests; <strong>seagrass</strong> meadows stabilize sediments and filter water. At the conference, Kenya announced $1 billion in conservation commitments, while the global total reached $6.4 billion from 104 countries. The plan addresses threats including mangrove conversion to aquaculture, illegal fishing, and climate-driven sea-level rise.</p>
+        </div>
+      </article>
+      <article class="story">
+        <div class="story-number">4</div>
+        <div class="story-body">
+          <div class="story-tag">Species Recovery - Marine</div>
+          <p class="story-text"><strong>Humpback whale</strong> populations in the <strong>Southern Hemisphere</strong> have rebounded so dramatically that scientists are now witnessing unprecedented gatherings of hundreds of whales feeding together—a phenomenon that began again around 2012 after disappearing for decades. A South African couple documented a <strong>supergroup of 299 humpbacks</strong> off the <strong>West Coast of South Africa</strong> in December 2025, believed to be the largest documented gathering. Populations have surged from fewer than 10,000 at the height of commercial whaling to over 100,000 today, making the international whaling moratorium "one of the strongest conservation success stories in the marine environment," according to marine scientists. However, new threats are emerging: the <strong>Israel-Hamas war</strong> and <strong>Yemen conflict</strong> have quadrupled shipping around <strong>South Africa</strong>, increasing fatal ship strikes. Scientists are lobbying for official speed limits for vessels near whale migration routes.</p>
+        </div>
+      </article>
+      <article class="story">
+        <div class="story-number">5</div>
+        <div class="story-body">
+          <div class="story-tag">Habitat Connectivity - UK Conservation</div>
+          <p class="story-text">Conservation efforts across the <strong>UK</strong> are showing that traditional farming practices can coexist with rare species protection—recent successes include recovery of <strong>high brown fritillary butterflies</strong> and <strong>rare plants like whorled caraway</strong> through carefully managed pasture grazing by local farmers. The approach, which balances habitat protection with sustainable livelihoods, is gaining traction as climate change and human development continue to fragment ecosystems. Charities like <strong>Botanic Gardens Conservation International</strong> warn that some <strong>UK plant treasures</strong> like <strong>Wilmott's whitebeam</strong>—reduced to fewer than 50 individuals in the wild and found only in the <strong>Avon Gorge</strong>—face extinction from railway construction and unknown diseases. These successes demonstrate that integrating <strong>conservation with community land management</strong> can deliver results for wildlife while supporting rural economies and local stewardship traditions.</p>
+        </div>
+      </article>
+      <article class="story">
+        <div class="story-number">6</div>
+        <div class="story-body">
+          <div class="story-tag">Environmental Justice & Coastal Protection</div>
+          <p class="story-text">Shipping traffic around <strong>South Africa</strong> has quadrupled since December 2023, driven by the <strong>Israel-Hamas war</strong>, <strong>Houthi attacks in the Red Sea</strong>, and the emerging <strong>Iran-Strait of Hormuz crisis</strong>, creating a dangerous new threat to marine wildlife and coastal ecosystems. The increased vessel congestion coincides with the recovery of <strong>humpback whale populations</strong>, raising collision risks that scientists warn could undermine decades of conservation gains. <strong>Cape Town's coastal manager</strong> reports whale carcasses washing ashore with propeller strike evidence, indicating ongoing lethal interactions. Scientists and coastal managers are pushing for official speed restrictions near <strong>South African waters</strong> to give vessels time to detect whales and alter course. The crisis illustrates how geopolitical instability and global supply chains intersect with conservation, requiring international coordination to protect both maritime interests and marine ecosystems.</p>
+        </div>
+      </article>
+      <article class="story">
+        <div class="story-number">7</div>
+        <div class="story-body">
+          <div class="story-tag">Indigenous Knowledge & Fire Management</div>
+          <p class="story-text"><strong>Indigenous communities</strong> across North America and Australia are reviving traditional <strong>cultural burning practices</strong>—low-intensity controlled burns that reduce catastrophic wildfire risk while enhancing biodiversity and restoring ecological balance. As climate change intensifies droughts and heatwaves, fire managers and ecologists increasingly recognize that decades of fire suppression have created dangerous fuel buildups, and that Indigenous fire stewardship—refined over thousands of years—offers essential knowledge for adapting to a hotter, drier future. Recent initiatives are supporting <strong>Indigenous-led mosaic burning</strong> that creates a patchwork of different vegetation ages and moisture levels, reducing wildfire spread while promoting habitat diversity for animals and plants adapted to fire-maintained ecosystems. Communities emphasize that <strong>cultural burning is not just a fire management tool but a restoration of relationships with the land</strong> that modern conservation science is only beginning to understand.</p>
+        </div>
+      </article>
+      <article class="story">
+        <div class="story-number">8</div>
+        <div class="story-body">
+          <div class="story-tag">Zoo Breeding & Species Recovery</div>
+          <p class="story-text">Accredited zoos across North America and Asia are intensifying <strong>collaborative breeding programs</strong> for critically endangered species including <strong>giant pandas</strong>, <strong>red pandas</strong>, and other mammals as a final safety net against extinction in the wild. With fewer than 10,000 <strong>red pandas</strong> estimated to remain in the wild, every birth in coordinated breeding programs becomes critical insurance against complete loss of genetic diversity. The <strong>Species Survival Plan (SSP)</strong> coordinates breeding efforts across institutions to maintain healthy, genetically diverse populations, while facilities fund field conservation projects, conduct research, and prepare animals for potential reintroduction. Scientists emphasize that captive breeding is not a substitute for habitat protection but rather a "last resort" safety measure—the primary focus remains protecting wild populations and the ecosystems they depend on. Success stories like the <strong>giant panda's downlisting from endangered to vulnerable status</strong> demonstrate how decades of international coordination and habitat restoration can shift species from crisis toward recovery.</p>
+        </div>
+      </article>
+    </section>
+
+    <div class="closing-note">
+      <strong>Wild Today</strong> is a daily briefing of significant conservation news curated to inform and inspire action for biodiversity, wildlife, and ecosystem protection. Each story is selected for its relevance to conservation science and practice.
+    </div>
+  </main>
+
+  <footer class="footer">
+    <p>&copy; 2026 Wild Tomorrow. All conservation stories sourced from public news and science sources.</p>
+  </footer>
+</body>
+</html>
