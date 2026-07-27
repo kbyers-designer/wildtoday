@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wild Today — Daily Conservation Briefing</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Barlow+Condensed:wght@400;600;700&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --crimson:   #7a1a1a;
+      --crimson-lt:#9e2222;
+      --slate:     #4d7c8a;
+      --slate-lt:  #6aa3b5;
+      --near-black:#0d0d0d;
+      --off-white: #f0ece4;
+      --warm-gray: #c8c0b4;
+      --mid-gray:  #4a4540;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--near-black);
+      color: var(--off-white);
+      font-family: 'Barlow', sans-serif;
+      font-weight: 300;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    .masthead {
+      position: relative;
+      border-bottom: 3px solid var(--crimson);
+      padding: 2.5rem 2rem 2rem;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .masthead::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(
+        90deg,
+        transparent,
+        transparent 120px,
+        rgba(122,26,26,0.04) 120px,
+        rgba(122,26,26,0.04) 121px
+      );
+      pointer-events: none;
+    }
+
+    .masthead-left { display: flex; flex-direction: column; gap: 0.2rem; }
+    .masthead-eyebrow {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 600;
+      font-size: 0.7rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--slate-lt);
+    }
+
+    .masthead-title {
+      font-family: 'Playfair Display', serif;
+      font-weight: 900;
+      font-size: clamp(2.8rem, 8vw, 5rem);
+      line-height: 0.95;
+      color: var(--off-white);
+      letter-spacing: -0.02em;
+    }
+
+    .masthead-title span { color: var(--crimson-lt); }
+    .masthead-sub {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 400;
+      font-size: 0.85rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--warm-gray);
+      margin-top: 0.4rem;
+    }
+
+    .masthead-right {
+      text-align: right;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.78rem;
+      color: var(--warm-gray);
+      line-height: 1.8;
+    }
+
+    .content { max-width: 1000px; margin: 0 auto; padding: 0 2rem; }
+
+    .stories { display: flex; flex-direction: column; gap: 3.5rem; padding: 3rem 0; }
+
+    .story {
+      display: grid;
+      grid-template-columns: 3.5rem 1fr;
+      gap: 1.5rem;
+      align-items: flex-start;
+    }
+
+    .story-number {
+      font-family: 'Playfair Display', serif;
+      font-weight: 900;
+      font-size: 4rem;
+      line-height: 1;
+      padding-top: 0.1rem;
+      user-select: none;
+    }
+
+    .story:nth-child(odd) .story-number { color: var(--crimson-lt); }
+    .story:nth-child(even) .story-number { color: var(--slate); }
+
+    .story-body { padding-left: 0.5rem; }
+    .story-tag {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--warm-gray);
+      margin-bottom: 0.5rem;
+    }
+
+    .story-text {
+      font-size: 1.05rem;
+      line-height: 1.75;
+      color: var(--off-white);
+      font-weight: 300;
+    }
+
+    .story-text strong {
+      font-weight: 500;
+      color: #fff;
+    }
+
+    .closing-note {
+      margin-top: 3rem;
+      padding: 2rem;
+      border-left: 3px solid var(--crimson);
+      background: rgba(122,26,26,0.1);
+      font-size: 0.95rem;
+      color: var(--warm-gray);
+      font-style: italic;
+    }
+
+    .footer { padding: 3rem 0; text-align: center; color: var(--warm-gray); font-size: 0.85rem; }
+  </style>
+</head>
+<body>
+  <header class="masthead">
+    <div class="masthead-left">
+      <div class="masthead-eyebrow">Daily Conservation Briefing</div>
+      <h1 class="masthead-title">Wild<span>Today</span></h1>
+      <div class="masthead-sub">Stories That Matter for Our Living World</div>
+    </div>
+    <div class="masthead-right">
+      2026-07-27
+    </div>
+  </header>
+
+  <main class="content">
+    <section class="stories">
+      <article class="story">
+        <div class="story-number">1</div>
+        <div class="story-body">
+          <div class="story-tag">State Conservation Policy - US</div>
+          <h2 style="font-size: 1.3rem; font-weight: 600; color: var(--off-white); margin-bottom: 0.5rem; margin-top: 0;">Oregon Board Approves Forest Management Plan Protecting Endangered Species Despite Federal Changes</h2>
+          <p class="story-text">The <strong>Oregon Board of Forestry</strong> approved a landmark management plan on Wednesday for the state's <strong>640,000 acres of state forests</strong>, committing to restrict logging and protect sensitive habitats on half the forest area while allowing sustainable timber use on the other half. The plan was approved despite recent <strong>Trump administration changes</strong> to the federal <strong>Endangered Species Act</strong> that remove habitat protections, demonstrating Oregon's commitment to safeguarding species like <strong>marbled murrelets</strong> and <strong>spotted owls</strong>. State leaders emphasized that habitat protection remains essential for <strong>endangered species recovery</strong>, warning that federal changes could undermine decades of <strong>collaborative conservation policymaking</strong> involving landowners, conservationists, and government agencies.</p>
+        </div>
+      </article>
+      <article class="story">
+        <div class="story-number">2</div>
+        <div class="story-body">
+          <div class="story-tag">Endangered Species - US Policy</div>
+          <h2 style="font-size: 1.3rem; font-weight: 600; color: var(--off-white); margin-bottom: 0.5rem; margin-top: 0;">New Federal Rules Weaken Protections for More Than 100 Florida Species Including Panthers and Manatees</h2>
+          <p class="story-text">The <strong>Trump administration's</strong> new regulations on the <strong>Endangered Species Act</strong>, effective this month, threaten over 100 Florida species by removing habitat degradation from the definition of "harm"—meaning projects can destroy critical wildlife habitats as long as they don't directly kill animals. <strong>Florida manatees</strong>, facing starvation from pollution-caused algae blooms that killed 1,255 animals in the <strong>Indian River Lagoon</strong> between 2020-2022, and <strong>Florida panthers</strong>, whose habitat faces rapid development, are among the most vulnerable species. Conservation groups warn the changes will accelerate coastal development, weaken tourism-dependent ecosystems, and silence environmental advocates who have relied on habitat protection lawsuits for decades. The <strong>Florida Wildlife Federation</strong> calls Florida "ground zero" for these changes, given the state's rapid development and irreplaceable wildlife habitat.</p>
+        </div>
+      </article>
+      <article class="story">
+        <div class="story-number">3</div>
+        <div class="story-body">
+          <div class="story-tag">Marine & Coastal Ecosystem Recovery - International</div>
+          <h2 style="font-size: 1.3rem; font-weight: 600; color: var(--off-white); margin-bottom: 0.5rem; margin-top: 0;">Global Mangrove Forests Stage Remarkable Recovery After Decades of Decline</h2>
+          <p class="story-text"><strong>Scientists analyzing four decades of satellite imagery</strong> from 1980-2023 have documented a striking turnaround for the world's mangrove forests—once disappearing at alarming rates due to aquaculture, agriculture, and coastal development, mangrove losses have now plateaued and natural regrowth is reversing centuries of decline. <strong>Kenya's mangrove restoration programs</strong> have expanded to protect 60,000 hectares, while <strong>Costa Rican conservation groups</strong> have replanted over 12,000 native mangrove seedlings with 80% survival rates, creating employment for fishing communities. <strong>Mangrove ecosystems</strong> are climate superheroes, storing multiple times more carbon per hectare than terrestrial forests while providing nurseries for fish, protection from storms, and livelihoods for 2.4 billion people living within 100 kilometers of coastlines.</p>
+        </div>
+      </article>
+      <article class="story">
+        <div class="story-number">4</div>
+        <div class="story-body">
+          <div class="story-tag">Coral Reef Restoration - Marine</div>
+          <h2 style="font-size: 1.3rem; font-weight: 600; color: var(--off-white); margin-bottom: 0.5rem; margin-top: 0;">Iconic Reefs Initiative Aims to Restore Five Million Corals in Florida Keys National Marine Sanctuary</h2>
+          <p class="story-text"><strong>NOAA's Iconic Reefs initiative</strong> has launched an ambitious 20-year coral restoration program targeting <strong>five million corals</strong> across the <strong>Florida Keys National Marine Sanctuary</strong>, combining ocean-based and land-based nurseries to build climate-resilient reef systems. The initiative is training <strong>Native Hawaiians and community members</strong> in coral restoration and scientific diving, creating pathways to marine science careers while addressing the ecological and economic crisis of reef decline. <strong>Coral reefs</strong> protect hundreds of thousands of marine species, support global fisheries that feed millions, and defend coastlines from storms—restoration efforts recognize that protecting these ecosystems means ensuring the survival of human communities equally dependent on them.</p>
+        </div>
+      </article>
+      <article class="story">
+        <div class="story-number">5</div>
+        <div class="story-body">
+          <div class="story-tag">Tropical Forest & Deforestation - Climate Solution</div>
+          <h2 style="font-size: 1.3rem; font-weight: 600; color: var(--off-white); margin-bottom: 0.5rem; margin-top: 0;">Madagascar's Rainforest Conservation Effort Expands to Protect Endemic Wildlife and Store Carbon</h2>
+          <p class="story-text"><strong>Madagascar's endemic biodiversity</strong>—90% of the island's species exist nowhere else on Earth—faces mounting pressure from deforestation, yet conservation groups are expanding protected areas and working with local communities to restore degraded forest patches. <strong>Lemur populations</strong>, iconic symbols of Madagascar's unique evolutionary heritage, depend on rapidly vanishing forest habitat, and restoration programs are creating corridors that allow animals to move safely between protected reserves. Forests, particularly in tropical regions, store more carbon per hectare than any other ecosystem and provide irreplaceable habitat for species found nowhere else—protecting them is both a climate imperative and a uniqueness-preservation mission for some of Earth's rarest animals.</p>
+        </div>
+      </article>
+      <article class="story">
+        <div class="story-number">6</div>
+        <div class="story-body">
+          <div class="story-tag">Community-Based Conservation - Indigenous Stewardship</div>
+          <h2 style="font-size: 1.3rem; font-weight: 600; color: var(--off-white); margin-bottom: 0.5rem; margin-top: 0;">Indigenous Communities Expand Traditional Land Stewardship Programs Across North America</h2>
+          <p class="story-text"><strong>Indigenous nations</strong> across North America are gaining recognition and funding for traditional ecological stewardship practices that enhance biodiversity, manage fire risk, and sequester carbon—challenging the colonial model of "wilderness" preservation without communities. <strong>Tribal land management</strong>, refined over thousands of years, demonstrates that human communities and thriving ecosystems can coexist when Indigenous knowledge guides conservation decisions. Conservation organizations are increasingly partnering with <strong>Indigenous-led initiatives</strong>, recognizing that <strong>Indigenous-managed lands</strong> show superior biodiversity and carbon storage outcomes compared to parks managed without traditional stewardship, and that supporting Indigenous sovereignty is fundamental to planetary health.</p>
+        </div>
+      </article>
+      <article class="story">
+        <div class="story-number">7</div>
+        <div class="story-body">
+          <div class="story-tag">Ocean Acidification & Marine Research - Science</div>
+          <h2 style="font-size: 1.3rem; font-weight: 600; color: var(--off-white); margin-bottom: 0.5rem; margin-top: 0;">New Deep-Sea Coral Research Reveals How Ocean Ecosystems Adapt to Changing Chemistry</h2>
+          <p class="story-text"><strong>NOAA researchers</strong> studying <strong>Maine's deep-sea coral communities</strong> have discovered surprising resilience mechanisms in coral species living in cold, high-pressure environments facing rapid chemical changes in ocean water. The research provides critical insights into how marine ecosystems respond to <strong>ocean acidification</strong> caused by rising CO₂ absorption, informing conservation strategies for species that have survived dramatic environmental shifts before. Understanding deep-sea coral adaptation is vital because these ecosystems support unique communities of animals and may hold clues to how other marine life could adapt to a rapidly warming ocean.</p>
+        </div>
+      </article>
+    </section>
+
+    <div class="closing-note">
+      <strong>Wild Today</strong> is a daily briefing of significant conservation news curated to inform and inspire action for biodiversity, wildlife, and ecosystem protection. Each story is selected for its relevance to conservation science and practice.
+    </div>
+  </main>
+
+  <footer class="footer">
+    <p>&copy; 2026 Wild Tomorrow. All conservation stories sourced from public news and science sources.</p>
+  </footer>
+</body>
+</html>
