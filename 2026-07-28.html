@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wild Today — Daily Conservation Briefing</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Barlow+Condensed:wght@400;600;700&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --crimson:   #7a1a1a;
+      --crimson-lt:#9e2222;
+      --slate:     #4d7c8a;
+      --slate-lt:  #6aa3b5;
+      --near-black:#0d0d0d;
+      --off-white: #f0ece4;
+      --warm-gray: #c8c0b4;
+      --mid-gray:  #4a4540;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--near-black);
+      color: var(--off-white);
+      font-family: 'Barlow', sans-serif;
+      font-weight: 300;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    .masthead {
+      position: relative;
+      border-bottom: 3px solid var(--crimson);
+      padding: 2.5rem 2rem 2rem;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .masthead::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(
+        90deg,
+        transparent,
+        transparent 120px,
+        rgba(122,26,26,0.04) 120px,
+        rgba(122,26,26,0.04) 121px
+      );
+      pointer-events: none;
+    }
+
+    .masthead-left { display: flex; flex-direction: column; gap: 0.2rem; }
+    .masthead-eyebrow {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 600;
+      font-size: 0.7rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--slate-lt);
+    }
+
+    .masthead-title {
+      font-family: 'Playfair Display', serif;
+      font-weight: 900;
+      font-size: clamp(2.8rem, 8vw, 5rem);
+      line-height: 0.95;
+      color: var(--off-white);
+      letter-spacing: -0.02em;
+    }
+
+    .masthead-title span { color: var(--crimson-lt); }
+    .masthead-sub {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 400;
+      font-size: 0.85rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--warm-gray);
+      margin-top: 0.4rem;
+    }
+
+    .masthead-right {
+      text-align: right;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.78rem;
+      color: var(--warm-gray);
+      line-height: 1.8;
+    }
+
+    .content { max-width: 1000px; margin: 0 auto; padding: 0 2rem; }
+
+    .stories { display: flex; flex-direction: column; gap: 3.5rem; padding: 3rem 0; }
+
+    .story {
+      display: grid;
+      grid-template-columns: 3.5rem 1fr;
+      gap: 1.5rem;
+      align-items: flex-start;
+    }
+
+    .story-number {
+      font-family: 'Playfair Display', serif;
+      font-weight: 900;
+      font-size: 4rem;
+      line-height: 1;
+      padding-top: 0.1rem;
+      user-select: none;
+    }
+
+    .story:nth-child(odd) .story-number { color: var(--crimson-lt); }
+    .story:nth-child(even) .story-number { color: var(--slate); }
+
+    .story-body { padding-left: 0.5rem; }
+    .story-tag {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--warm-gray);
+      margin-bottom: 0.5rem;
+    }
+
+    .story-text {
+      font-size: 1.05rem;
+      line-height: 1.75;
+      color: var(--off-white);
+      font-weight: 300;
+    }
+
+    .story-text strong {
+      font-weight: 500;
+      color: #fff;
+    }
+
+    .closing-note {
+      margin-top: 3rem;
+      padding: 2rem;
+      border-left: 3px solid var(--crimson);
+      background: rgba(122,26,26,0.1);
+      font-size: 0.95rem;
+      color: var(--warm-gray);
+      font-style: italic;
+    }
+
+    .footer { padding: 3rem 0; text-align: center; color: var(--warm-gray); font-size: 0.85rem; }
+  </style>
+</head>
+<body>
+  <header class="masthead">
+    <div class="masthead-left">
+      <div class="masthead-eyebrow">Daily Conservation Briefing</div>
+      <h1 class="masthead-title">Wild<span>Today</span></h1>
+      <div class="masthead-sub">Stories That Matter for Our Living World</div>
+    </div>
+    <div class="masthead-right">
+      2026-07-28
+    </div>
+  </header>
+
+  <main class="content">
+    <section class="stories">
+      <article class="story">
+        <div class="story-number">1</div>
+        <div class="story-body">
+          <div class="story-tag">US Policy - Species Protection</div>
+          <h2 style="font-size: 1.3rem; font-weight: 600; color: var(--off-white); margin-bottom: 0.5rem; margin-top: 0;">Florida Democrats Push Back Against Trump Administration's Endangered Species Act Rollback</h2>
+          <p class="story-text">Florida's congressional delegation is demanding the <strong>Trump administration</strong> withdraw regulations that weaken protections under the <strong>Endangered Species Act</strong>, which eliminate habitat degradation from the definition of "harm." The change threatens over <strong>100 Florida species</strong> including <strong>manatees</strong> and <strong>Florida panthers</strong>, with <strong>Florida manatees</strong> particularly vulnerable after <strong>1,255 animals died</strong> from pollution-caused algae blooms in the Indian River Lagoon between 2020-2022. The <strong>Florida Wildlife Federation</strong> warns the rollback will accelerate coastal development and weaken decades of collaborative conservation efforts, calling Florida "ground zero" for these changes given rapid urbanization threatening critical wildlife habitat.</p>
+        </div>
+      </article>
+      <article class="story">
+        <div class="story-number">2</div>
+        <div class="story-body">
+          <div class="story-tag">Environmental Protection - Toxic Chemicals</div>
+          <h2 style="font-size: 1.3rem; font-weight: 600; color: var(--off-white); margin-bottom: 0.5rem; margin-top: 0;">Environmental Groups Urge EPA to Reject New 'Forever Chemical' for Datacenter Cooling</h2>
+          <p class="story-text">A coalition of 17 environmental groups has submitted formal comments demanding the <strong>EPA</strong> reject <strong>Chemours</strong>' request to fast-track approval for <strong>Opteon 2P50</strong>, a new <strong>PFAS "forever chemical"</strong> intended to cool datacenters. The groups warn the chemical is likely more toxic than claimed and poses unreasonable health risks—<strong>PFAS</strong> compounds are linked to cancer, liver disease, kidney issues, and birth defects—while also presenting climate risks. The effort represents a critical moment in protecting communities from toxic industrial pollution, as <strong>US drinking water is already widely contaminated</strong> with <strong>PFAS</strong> that accumulate in the body and environment and never break down naturally.</p>
+        </div>
+      </article>
+      <article class="story">
+        <div class="story-number">3</div>
+        <div class="story-body">
+          <div class="story-tag">Deforestation & Climate - International</div>
+          <h2 style="font-size: 1.3rem; font-weight: 600; color: var(--off-white); margin-bottom: 0.5rem; margin-top: 0;">Brazil Deploys Forensic 'Gold Fingerprinting' to Combat Illegal Amazon Mining</h2>
+          <p class="story-text">Brazilian authorities are using forensic science to trace the origins of seized gold through chemical analysis, targeting <strong>illegal mining operations</strong> destroying the <strong>Amazon rainforest</strong>. The technique, known as <strong>"gold fingerprinting,"</strong> examines trace elements like silver and copper to determine where gold was actually mined, helping identify whether supposedly legal gold was extracted from <strong>protected forests and Indigenous territories</strong>. <strong>Amazon Mining Watch estimates 496,000 hectares of rainforest have been cleared for mining since 2023</strong>, including severe damage through <strong>mercury pollution</strong> that contaminates waterways and fish. The forensic strategy supports broader efforts to expose criminal supply chains and protect the Amazon's critical role in storing carbon and regulating global climate.</p>
+        </div>
+      </article>
+      <article class="story">
+        <div class="story-number">4</div>
+        <div class="story-body">
+          <div class="story-tag">Indigenous Stewardship - Habitat Restoration</div>
+          <h2 style="font-size: 1.3rem; font-weight: 600; color: var(--off-white); margin-bottom: 0.5rem; margin-top: 0;">Yurok Tribe Reclaims 125-Acre Gateway as Save the Redwoods League Returns Ancestral Land</h2>
+          <p class="story-text"><strong>Save the Redwoods League</strong> transferred <strong>125 acres</strong> of land in the heart of <strong>Yurok ancestral territory</strong> back to the <strong>Yurok Tribe</strong>, returning a severely degraded former lumber mill site that is now a thriving ecosystem. The <strong>'O Rew Redwoods Gateway and Restoration Project</strong> restored <strong>one mile of braided stream channel, 20 acres of wetlands, and 20 acres of upland habitat</strong>, with the <strong>Yurok Revegetation Crew planting nearly half a million native seedlings</strong> spanning 50 species. Endangered <strong>coho salmon</strong>, along with great blue herons, bears, elk, condors, and riparian predators, are already using the restored habitat, representing one of the few large-scale stream restoration projects in rural Northern California where communities can witness ecological recovery powered by Indigenous land management practices.</p>
+        </div>
+      </article>
+      <article class="story">
+        <div class="story-number">5</div>
+        <div class="story-body">
+          <div class="story-tag">Indigenous Sovereignty - Water & Salmon</div>
+          <h2 style="font-size: 1.3rem; font-weight: 600; color: var(--off-white); margin-bottom: 0.5rem; margin-top: 0;">California Approves Historic Tribal Land Return for Quartz Valley Indian Reservation</h2>
+          <p class="story-text">The <strong>California State Water Resources Control Board</strong> approved <strong>$25 million in financing</strong> to help the <strong>Quartz Valley Indian Reservation</strong> acquire nearly <strong>40,000 acres of Scott River headwaters</strong> in Northern California's <strong>Klamath River Basin</strong>—what could become the second largest tribal land return in state history. The acquisition returns <strong>ancestral lands with salmon-bearing streams, cultural sites, forests, and critical drinking water resources</strong> to tribal stewardship, enabling the <strong>Quartz Valley Tribe</strong> to restore salmon habitat, improve forest health, and strengthen climate resilience while expanding opportunities for cultural access and ecological restoration. <strong>Quartz Valley Reservation Chairman Leonard Lincoln</strong> called it a "monumental victory" for a tribe that was once terminated and confined to just 2,000 acres.</p>
+        </div>
+      </article>
+      <article class="story">
+        <div class="story-number">6</div>
+        <div class="story-body">
+          <div class="story-tag">Invasive Species - Biodiversity Protection</div>
+          <h2 style="font-size: 1.3rem; font-weight: 600; color: var(--off-white); margin-bottom: 0.5rem; margin-top: 0;">Asian Hornet Invasion in Guernsey Prompts New Community-Based Tracking Strategy</h2>
+          <p class="story-text">Residents of <strong>Guernsey and Herm</strong> are being asked to "<strong>track not trample</strong>" <strong>Asian hornets</strong> in a new community-based conservation effort targeting the invasive species that poses major threats to island biodiversity and honeybees. More than <strong>200 Asian hornet queens have been caught so far this year</strong>, with <strong>nine primary nests destroyed</strong> across the island. The non-native species, which arrived in Europe after hitching rides in pottery shipments from Asia and first appeared in Guernsey in 2017, can expand rapidly during August and September into nests holding up to <strong>2,000 hornets</strong>. The <strong>Track Don't Trample strategy</strong> enlists volunteers to photograph hornets and note travel direction before submitting information, allowing authorities to locate and destroy nests safely while protecting communities and wildlife from this aggressive predator.</p>
+        </div>
+      </article>
+      <article class="story">
+        <div class="story-number">7</div>
+        <div class="story-body">
+          <div class="story-tag">Urban Conservation - Species Recovery</div>
+          <h2 style="font-size: 1.3rem; font-weight: 600; color: var(--off-white); margin-bottom: 0.5rem; margin-top: 0;">Urban Biodiversity Thrives as Hull City Center Creates 'Butterfly City' in Wildflower Meadow</h2>
+          <p class="story-text">A patch of land in <strong>Hull city centre</strong> has been allowed to grow wild, creating a haven for insects that has attracted <strong>ten species of butterflies</strong> including rare <strong>small skipper butterflies</strong> now breeding in the meadow. The "<strong>mini meadow</strong>" established in 2023 near <strong>St Stephen's Shopping Centre</strong> demonstrates that cities can support thriving ecosystems when given the chance—the site has also become home to dragonflies and grasshoppers, creating valuable habitat for <strong>caterpillar-dependent species</strong> that require uncut grass throughout the year. <strong>Hull Butterfly City</strong> advocates explain that while flowering plants are essential for adult pollinators, most butterfly species are highly specific about host plants for their caterpillars, making habitat diversity crucial for species recovery in otherwise developed urban areas.</p>
+        </div>
+      </article>
+    </section>
+
+    <div class="closing-note">
+      <strong>Wild Today</strong> is a daily briefing of significant conservation news curated to inform and inspire action for biodiversity, wildlife, and ecosystem protection. Each story is selected for its relevance to conservation science and practice.
+    </div>
+  </main>
+
+  <footer class="footer">
+    <p>&copy; 2026 Wild Tomorrow. All conservation stories sourced from public news and science sources.</p>
+  </footer>
+</body>
+</html>
