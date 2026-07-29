@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wild Today — Daily Conservation Briefing</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Barlow+Condensed:wght@400;600;700&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --crimson:   #7a1a1a;
+      --crimson-lt:#9e2222;
+      --slate:     #4d7c8a;
+      --slate-lt:  #6aa3b5;
+      --near-black:#0d0d0d;
+      --off-white: #f0ece4;
+      --warm-gray: #c8c0b4;
+      --mid-gray:  #4a4540;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--near-black);
+      color: var(--off-white);
+      font-family: 'Barlow', sans-serif;
+      font-weight: 300;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    .masthead {
+      position: relative;
+      border-bottom: 3px solid var(--crimson);
+      padding: 2.5rem 2rem 2rem;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .masthead::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(
+        90deg,
+        transparent,
+        transparent 120px,
+        rgba(122,26,26,0.04) 120px,
+        rgba(122,26,26,0.04) 121px
+      );
+      pointer-events: none;
+    }
+
+    .masthead-left { display: flex; flex-direction: column; gap: 0.2rem; }
+    .masthead-eyebrow {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 600;
+      font-size: 0.7rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--slate-lt);
+    }
+
+    .masthead-title {
+      font-family: 'Playfair Display', serif;
+      font-weight: 900;
+      font-size: clamp(2.8rem, 8vw, 5rem);
+      line-height: 0.95;
+      color: var(--off-white);
+      letter-spacing: -0.02em;
+    }
+
+    .masthead-title span { color: var(--crimson-lt); }
+    .masthead-sub {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 400;
+      font-size: 0.85rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--warm-gray);
+      margin-top: 0.4rem;
+    }
+
+    .masthead-right {
+      text-align: right;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.78rem;
+      color: var(--warm-gray);
+      line-height: 1.8;
+    }
+
+    .content { max-width: 1000px; margin: 0 auto; padding: 0 2rem; }
+
+    .stories { display: flex; flex-direction: column; gap: 3.5rem; padding: 3rem 0; }
+
+    .story {
+      display: grid;
+      grid-template-columns: 3.5rem 1fr;
+      gap: 1.5rem;
+      align-items: flex-start;
+    }
+
+    .story-number {
+      font-family: 'Playfair Display', serif;
+      font-weight: 900;
+      font-size: 4rem;
+      line-height: 1;
+      padding-top: 0.1rem;
+      user-select: none;
+    }
+
+    .story:nth-child(odd) .story-number { color: var(--crimson-lt); }
+    .story:nth-child(even) .story-number { color: var(--slate); }
+
+    .story-body { padding-left: 0.5rem; }
+    .story-tag {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--warm-gray);
+      margin-bottom: 0.5rem;
+    }
+
+    .story-text {
+      font-size: 1.05rem;
+      line-height: 1.75;
+      color: var(--off-white);
+      font-weight: 300;
+    }
+
+    .story-text strong {
+      font-weight: 500;
+      color: #fff;
+    }
+
+    .closing-note {
+      margin-top: 3rem;
+      padding: 2rem;
+      border-left: 3px solid var(--crimson);
+      background: rgba(122,26,26,0.1);
+      font-size: 0.95rem;
+      color: var(--warm-gray);
+      font-style: italic;
+    }
+
+    .footer { padding: 3rem 0; text-align: center; color: var(--warm-gray); font-size: 0.85rem; }
+  </style>
+</head>
+<body>
+  <header class="masthead">
+    <div class="masthead-left">
+      <div class="masthead-eyebrow">Daily Conservation Briefing</div>
+      <h1 class="masthead-title">Wild<span>Today</span></h1>
+      <div class="masthead-sub">Stories That Matter for Our Living World</div>
+    </div>
+    <div class="masthead-right">
+      2026-07-29
+    </div>
+  </header>
+
+  <main class="content">
+    <section class="stories">
+      <article class="story">
+        <div class="story-number">1</div>
+        <div class="story-body">
+          <div class="story-tag">US Policy - Habitat Protection</div>
+          <h2 style="font-size: 1.3rem; font-weight: 600; color: var(--off-white); margin-bottom: 0.5rem; margin-top: 0;">Oregon Forges Ahead with Endangered Species Protections Despite Federal Rollbacks</h2>
+          <p class="story-text">The <strong>Oregon Board of Forestry</strong> approved a landmark <strong>70-year forest management plan</strong> protecting state forests from harmful logging despite <strong>Trump administration changes to the Endangered Species Act</strong>. The plan restricts logging and protects sensitive habitats on half of Oregon's <strong>640,000 acres of state forest lands</strong>, crucial for endangered <strong>marbled murrelets</strong> and <strong>spotted owls</strong>. The decision defies federal rollbacks that remove the definition of "harm" under the <strong>Endangered Species Act</strong>, which previously protected habitat degradation—a move conservation groups warn will accelerate species extinction. State leaders emphasize Oregon's responsibility to future generations to balance conservation, economic, and social values on public lands.</p>
+        </div>
+      </article>
+      <article class="story">
+        <div class="story-number">2</div>
+        <div class="story-body">
+          <div class="story-tag">International - Deforestation & Climate</div>
+          <h2 style="font-size: 1.3rem; font-weight: 600; color: var(--off-white); margin-bottom: 0.5rem; margin-top: 0;">End of Brazil's Soy Moratorium Risks Millions of Hectares of Amazon Rainforest</h2>
+          <p class="story-text">Major soy companies including <strong>Cargill, ADM, Bunge, and Louis Dreyfus Company</strong> have terminated participation in the <strong>Amazon Soy Moratorium</strong>, a private-sector agreement that barred deforestation since 2008. A new study estimates <strong>9.1 million hectares of private forest and 28 million hectares of unprotected public forests</strong> are now at risk of legal deforestation. Withdrawing companies claim <strong>Mato Grosso state</strong> removed tax exemptions unfairly, but researchers warn the moratorium's end could result in <strong>1.4 million additional hectares of deforestation over the next decade</strong>, releasing <strong>745 million metric tons of CO2—equivalent to Canada's annual emissions</strong>. The loss threatens to weaken Brazil's position as a deforestation-free soy supplier.</p>
+        </div>
+      </article>
+      <article class="story">
+        <div class="story-number">3</div>
+        <div class="story-body">
+          <div class="story-tag">US Policy - Species Recovery</div>
+          <h2 style="font-size: 1.3rem; font-weight: 600; color: var(--off-white); margin-bottom: 0.5rem; margin-top: 0;">Coalition Urges New Mexico to Close Trapping Loopholes as Mexican Wolf Recovery Faces Setbacks</h2>
+          <p class="story-text"><strong>Fifteen wildlife and conservation organizations</strong> are demanding <strong>New Mexico</strong> strengthen protections for <strong>endangered Mexican gray wolves</strong> following recent trapping deaths, including two <strong>federally endangered wolves from the Sawtooth Pack</strong>. Since 2022, at least <strong>23 documented trapping incidents</strong> have resulted in serious injuries and deaths, highlighting continued risks to one of North America's rarest mammals with only <strong>286 known in the wild</strong>. The coalition's urgent letter comes as federal and state agencies prepare to pursue downlisting the species—a move the coalition warns is premature and ignores critical protection gaps. Leaders call for investigating alleged violations, expanding education about legal protections, and closing statutory loopholes.</p>
+        </div>
+      </article>
+      <article class="story">
+        <div class="story-number">4</div>
+        <div class="story-body">
+          <div class="story-tag">International - Indigenous Stewardship</div>
+          <h2 style="font-size: 1.3rem; font-weight: 600; color: var(--off-white); margin-bottom: 0.5rem; margin-top: 0;">Ecuador Creates Historic Rainforest Corridor, Reconnecting Protected Areas Through Indigenous-Led Management</h2>
+          <p class="story-text">The <strong>Ecuadorian government, backed by Conservation International, World Wildlife Fund, and the Global Environment Facility</strong>, announced the <strong>Yasuní-Limoncocha-Cuyabeno Corridor</strong>, a new <strong>173,000-hectare rainforest conservation corridor</strong> stitching three protected parks back into a connected landscape. The corridor benefits wildlife including <strong>jaguars, tapirs, and monkeys</strong> while protecting <strong>Kichwa, Siona, and Siekopai Indigenous communities</strong> whose generational ecological knowledge guides management. Unlike traditional protected areas, the corridor supports sustainable land use alongside wildlife—communities like <strong>Sani Isla Kichwa</strong> earn income from ecotourism while preserving forest integrity. The innovative approach recognizes that nearly all unprotected Ecuadorian land contains existing communities, requiring conservation models where wildlife and people prosper together.</p>
+        </div>
+      </article>
+      <article class="story">
+        <div class="story-number">5</div>
+        <div class="story-body">
+          <div class="story-tag">Marine Conservation - Breakthrough Science</div>
+          <h2 style="font-size: 1.3rem; font-weight: 600; color: var(--off-white); margin-bottom: 0.5rem; margin-top: 0;">Scientists Transplant Reef Microbiomes Off Puerto Rico, Opening New Frontier for Coral Restoration</h2>
+          <p class="story-text"><strong>Perry Institute for Marine Science researchers</strong> published groundbreaking findings showing that invisible microbial reef communities—viruses, bacteria, and other organisms that cycle nutrients and regulate disease—can be transplanted from one reef to another using <strong>Autonomous Reef Monitoring Structures (ARMS)</strong> and engineered <strong>Coral Arks</strong> suspended in open water. The study, published in <strong>One Earth journal</strong>, shows transplanted communities reorganize into functioning reef ecosystems resembling healthy reefs rather than degraded ones. Fish biomass increased around seeded arks, and early signs of fungal food webs appeared, suggesting restored microbiomes enable larger organisms to flourish. The <strong>Perry Institute's Reef Rescue Network</strong> is now trialing the ARMS-to-Arks approach across <strong>41 coral nurseries in the Caribbean, Madagascar, and The Bahamas</strong>.</p>
+        </div>
+      </article>
+      <article class="story">
+        <div class="story-number">6</div>
+        <div class="story-body">
+          <div class="story-tag">Climate & Species - Sea Turtles</div>
+          <h2 style="font-size: 1.3rem; font-weight: 600; color: var(--off-white); margin-bottom: 0.5rem; margin-top: 0;">Record Sea Turtle Nesting Season Threatened by Extreme Heat as Climate Impacts Hatchling Sex Ratios</h2>
+          <p class="story-text"><strong>Holden Beach Turtle Watch Patrol</strong> in <strong>North Carolina</strong> is celebrating <strong>69 documented nests</strong>—nearly double the 35 nests recorded at the same point last year—but volunteers face growing concerns about extreme summer heat impacts on developing hatchlings. Rising sand temperatures above <strong>85 degrees</strong> shift sex determination toward predominantly female turtles, a pattern that could skew population balance over time if heat stress continues. Volunteers report cases where eggs did not survive excessive heat, and overnight patrol work has become increasingly difficult under extreme July temperatures. Despite challenges, sea turtles have adapted to changing conditions for millions of years, and monitoring continues until hatchlings emerge and make their way safely to the ocean.</p>
+        </div>
+      </article>
+      <article class="story">
+        <div class="story-number">7</div>
+        <div class="story-body">
+          <div class="story-tag">US Policy - Endangered Species Act</div>
+          <h2 style="font-size: 1.3rem; font-weight: 600; color: var(--off-white); margin-bottom: 0.5rem; margin-top: 0;">Conservation Groups and States Sue Federal Government Over Endangered Species Act Habitat Protections Rollback</h2>
+          <p class="story-text"><strong>Earthjustice, Sierra Club, Environmental Law & Policy Center, and conservation tribes</strong> have filed multiple federal lawsuits challenging the Trump administration's removal of the <strong>Endangered Species Act's definition of "harm"</strong> to include habitat degradation. The change eliminates decades of habitat protections by allowing drilling, mining, logging, and development in critical habitats unless projects directly kill individual animals. <strong>Twenty-four Democratic-led states led by New York Attorney General Letitia James</strong> joined separate litigation arguing the EPA unlawfully removed the legal basis for regulating greenhouse gas emissions. Conservation scientists warn that habitat loss remains the leading cause of species decline—species like the <strong>northern spotted owl and Florida panther</strong> cannot recover without protected habitat. Legal observers expect these landmark cases to take years and potentially reach the U.S. Supreme Court.</p>
+        </div>
+      </article>
+
+    </section>
+
+    <div class="closing-note">
+      <strong>Wild Today</strong> is a daily briefing of significant conservation news curated to inform and inspire action for biodiversity, wildlife, and ecosystem protection. Each story is selected for its relevance to conservation science and practice.
+    </div>
+  </main>
+
+  <footer class="footer">
+    <p>&copy; 2026 Wild Tomorrow. All conservation stories sourced from public news and science sources.</p>
+  </footer>
+</body>
+</html>
