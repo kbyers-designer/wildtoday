@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wild Today — Daily Conservation Briefing</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Barlow+Condensed:wght@400;600;700&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --crimson:   #7a1a1a;
+      --crimson-lt:#9e2222;
+      --slate:     #4d7c8a;
+      --slate-lt:  #6aa3b5;
+      --near-black:#0d0d0d;
+      --off-white: #f0ece4;
+      --warm-gray: #c8c0b4;
+      --mid-gray:  #4a4540;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--near-black);
+      color: var(--off-white);
+      font-family: 'Barlow', sans-serif;
+      font-weight: 300;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    .masthead {
+      position: relative;
+      border-bottom: 3px solid var(--crimson);
+      padding: 2.5rem 2rem 2rem;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .masthead::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(
+        90deg,
+        transparent,
+        transparent 120px,
+        rgba(122,26,26,0.04) 120px,
+        rgba(122,26,26,0.04) 121px
+      );
+      pointer-events: none;
+    }
+
+    .masthead-left { display: flex; flex-direction: column; gap: 0.2rem; }
+    .masthead-eyebrow {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 600;
+      font-size: 0.7rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--slate-lt);
+    }
+
+    .masthead-title {
+      font-family: 'Playfair Display', serif;
+      font-weight: 900;
+      font-size: clamp(2.8rem, 8vw, 5rem);
+      line-height: 0.95;
+      color: var(--off-white);
+      letter-spacing: -0.02em;
+    }
+
+    .masthead-title span { color: var(--crimson-lt); }
+    .masthead-sub {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 400;
+      font-size: 0.85rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--warm-gray);
+      margin-top: 0.4rem;
+    }
+
+    .masthead-right {
+      text-align: right;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.78rem;
+      color: var(--warm-gray);
+      line-height: 1.8;
+    }
+
+    .content { max-width: 1000px; margin: 0 auto; padding: 0 2rem; }
+
+    .stories { display: flex; flex-direction: column; gap: 3.5rem; padding: 3rem 0; }
+
+    .story {
+      display: grid;
+      grid-template-columns: 3.5rem 1fr;
+      gap: 1.5rem;
+      align-items: flex-start;
+    }
+
+    .story-number {
+      font-family: 'Playfair Display', serif;
+      font-weight: 900;
+      font-size: 4rem;
+      line-height: 1;
+      padding-top: 0.1rem;
+      user-select: none;
+    }
+
+    .story:nth-child(odd) .story-number { color: var(--crimson-lt); }
+    .story:nth-child(even) .story-number { color: var(--slate); }
+
+    .story-body { padding-left: 0.5rem; }
+    .story-tag {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--warm-gray);
+      margin-bottom: 0.5rem;
+    }
+
+    .story-text {
+      font-size: 1.05rem;
+      line-height: 1.75;
+      color: var(--off-white);
+      font-weight: 300;
+    }
+
+    .story-text strong {
+      font-weight: 500;
+      color: #fff;
+    }
+
+    .closing-note {
+      margin-top: 3rem;
+      padding: 2rem;
+      border-left: 3px solid var(--crimson);
+      background: rgba(122,26,26,0.1);
+      font-size: 0.95rem;
+      color: var(--warm-gray);
+      font-style: italic;
+    }
+
+    .footer { padding: 3rem 0; text-align: center; color: var(--warm-gray); font-size: 0.85rem; }
+  </style>
+</head>
+<body>
+  <header class="masthead">
+    <div class="masthead-left">
+      <div class="masthead-eyebrow">Daily Conservation Briefing</div>
+      <h1 class="masthead-title">Wild<span>Today</span></h1>
+      <div class="masthead-sub">Stories That Matter for Our Living World</div>
+    </div>
+    <div class="masthead-right">
+      2026-07-30
+    </div>
+  </header>
+
+  <main class="content">
+    <section class="stories">
+      <article class="story">
+        <div class="story-number">1</div>
+        <div class="story-body">
+          <div class="story-tag">International - Species Recovery</div>
+          <h2 style="font-size: 1.3rem; font-weight: 600; color: var(--off-white); margin-bottom: 0.5rem; margin-top: 0;">Cheetahs Return to Zambia After 30 Years, Strengthening Vulnerable Population</h2>
+          <p class="story-text">Six cheetahs have been successfully reintroduced to <strong>Zambia's Greater Luangwa Ecosystem</strong> nearly three decades after the species vanished from the region. The <strong>Department of National Parks and Wildlife</strong> and <strong>Endangered Wildlife Trust</strong> translocated three males and three females from South African reserves, with additional cohorts planned through 2027. Though cheetahs cannot naturally recolonize disconnected populations, conservation efforts have restored healthy prey populations, allowing large carnivores to flourish once again. The reintroduction strengthens genetic resilience for the species across southern Africa, though experts emphasize success depends on habitat maintenance and community engagement.</p>
+        </div>
+      </article>
+      <article class="story">
+        <div class="story-number">2</div>
+        <div class="story-body">
+          <div class="story-tag">US Policy - Habitat Protection</div>
+          <h2 style="font-size: 1.3rem; font-weight: 600; color: var(--off-white); margin-bottom: 0.5rem; margin-top: 0;">Conservation Groups Sue Trump Administration Over Cattle Damage to Endangered Species Habitats in Arizona</h2>
+          <p class="story-text"><strong>Center for Biological Diversity</strong> and <strong>Maricopa Bird Alliance</strong> filed a federal lawsuit challenging the <strong>Bureau of Land Management's</strong> authorization of cattle grazing in Arizona's <strong>Gila District</strong>. The lawsuit argues the practice violates the <strong>Endangered Species Act</strong>, as livestock damage threatens species including <strong>southwestern willow flycatchers, yellow-billed cuckoos, Gila chub, and razorback suckers</strong>. Field surveys found that 85% of riparian critical habitat surveyed—roughly 2,070 miles—shows damage from livestock grazing, with cattle contaminating water sources and stripping vegetation essential for imperiled species recovery.</p>
+        </div>
+      </article>
+      <article class="story">
+        <div class="story-number">3</div>
+        <div class="story-body">
+          <div class="story-tag">US - Fisheries & Invasive Species</div>
+          <h2 style="font-size: 1.3rem; font-weight: 600; color: var(--off-white); margin-bottom: 0.5rem; margin-top: 0;">Invasive Mussels Trigger Collapse of Lake Whitefish, Iconic Great Lakes Species</h2>
+          <p class="story-text">The <strong>lake whitefish</strong>, a delicacy for centuries and cornerstone of <strong>Native American traditions</strong>, faces potential extinction in parts of the Great Lakes due to invasive <strong>quagga and zebra mussels</strong>. These mussels consume phytoplankton that feed <strong>diporeia</strong>, tiny crustaceans crucial to whitefish fingerling survival. Commercial harvests have plummeted from 200,000 pounds in 2009 to just 185,000 today. <strong>Ohio's Department of Wildlife</strong> deploys tarps and high-pressure jets to control mussel colonies, but large-scale solutions remain elusive. Researchers and congressional leaders are advocating for $50 million annually to develop effective mitigation strategies across the region.</p>
+        </div>
+      </article>
+      <article class="story">
+        <div class="story-number">4</div>
+        <div class="story-body">
+          <div class="story-tag">Marine - Species Milestone</div>
+          <h2 style="font-size: 1.3rem; font-weight: 600; color: var(--off-white); margin-bottom: 0.5rem; margin-top: 0;">Historic Humpback Whale Birth Recorded by Drone Off Australian Coast</h2>
+          <p class="story-text">A drone pilot captured what is believed to be only the <strong>fourth complete humpback whale birth ever filmed</strong> and the first documented by aerial technology. <strong>Alexander Forrest</strong> of <strong>Organisation for the Rescue and Research of Cetaceans in Australia</strong> filmed an adult female delivering her calf in calm waters off the NSW north coast, capturing the newborn's first breath and bonding moment with its mother. The footage offers unprecedented insight into humpback reproduction and recovery from near-extinction, with migrating populations rebounding across the Southern Ocean thanks to decades of protection.</p>
+        </div>
+      </article>
+      <article class="story">
+        <div class="story-number">5</div>
+        <div class="story-body">
+          <div class="story-tag">International - Biodiversity Threat</div>
+          <h2 style="font-size: 1.3rem; font-weight: 600; color: var(--off-white); margin-bottom: 0.5rem; margin-top: 0;">Ships Stuck in Strait of Hormuz Pose Unprecedented 'Super-Spreader' Invasive Species Risk</h2>
+          <p class="story-text">More than <strong>1,500 commercial vessels stranded in the Gulf of Oman</strong> since February could unleash a global marine biodiversity crisis when shipping resumes. Scientists warn that months of hull stagnation have allowed <strong>barnacles, algae, mussels, and other organisms</strong> to establish dense communities that could spread invasive species worldwide. <strong>Prof Mario Tamburri</strong> of the <strong>University of Maryland</strong> called it a "perfect storm"—with no previous shipping disruption involving so many idle vessels for so long. Invasive species can devastate fisheries, harm native ecosystems, and cost billions annually. Governments are urged to inspect and clean ships before departure to prevent ecosystem collapse in vulnerable regions.</p>
+        </div>
+      </article>
+      <article class="story">
+        <div class="story-number">6</div>
+        <div class="story-body">
+          <div class="story-tag">Africa - Wildlife Crisis</div>
+          <h2 style="font-size: 1.3rem; font-weight: 600; color: var(--off-white); margin-bottom: 0.5rem; margin-top: 0;">Kenya Investigates Mysterious Deaths of 15 Elephants in Amboseli National Park</h2>
+          <p class="story-text"><strong>Kenya's Wildlife Service</strong> is investigating the deaths of 15 elephants in <strong>Amboseli National Park</strong> over the past month, with 10 showing signs of partial paralysis before dying within two days. Preliminary tests detected a potential toxic substance, though lab analyses remain inconclusive. Most affected were female elephants and calves in the <strong>Kimana sanctuary and Kuku ranch</strong> areas. Environmental investigations are underway to identify water contamination or other sources. While poisoning related to poaching remains a concern, officials have found no evidence the condition affects humans, and broader habitat and water quality assessments continue.</p>
+        </div>
+      </article>
+      <article class="story">
+        <div class="story-number">7</div>
+        <div class="story-body">
+          <div class="story-tag">Conservation Strategy - Commentary</div>
+          <h2 style="font-size: 1.3rem; font-weight: 600; color: var(--off-white); margin-bottom: 0.5rem; margin-top: 0;">Conservation Experts Warn Against Risky Species Introductions Outside Natural Ranges</h2>
+          <p class="story-text">A new commentary from <strong>Lincoln Park Zoo</strong> and the <strong>IUCN Antelope Specialist Group</strong> cautions conservationists against introducing animals outside their native habitats, citing documented failures from <strong>mesquite trees in East Africa to zebras competing with endangered sable antelopes in Kenya</strong>. While reintroductions within historic ranges have proven effective, introducing non-native species risks unintended ecological disruption and genetic contamination. <strong>IUCN guidelines</strong> restrict such introductions to exceptional circumstances—habitat loss forcing relocation or species introduced to control invasive pests. The authors argue conservation should allow evolution to proceed naturally rather than engineering complex ecosystems with unpredictable consequences.</p>
+        </div>
+      </article>
+      <article class="story">
+        <div class="story-number">8</div>
+        <div class="story-body">
+          <div class="story-tag">Indigenous Stewardship - Habitat Recovery</div>
+          <h2 style="font-size: 1.3rem; font-weight: 600; color: var(--off-white); margin-bottom: 0.5rem; margin-top: 0;">First Nations Lead Historic Salmon Restoration on Canada's Upper Columbia River</h2>
+          <p class="story-text"><strong>First Nations communities</strong> are spearheading the remarkable return of Pacific salmon to <strong>Canada's Upper Columbia River</strong> through collaborative restoration efforts. <strong>Shuswap Band drummers</strong> lead ceremonial fry releases that reconnect Indigenous ecological knowledge with modern conservation, uniting Indigenous and non-Indigenous partners in salmon recovery. The restoration addresses decades of habitat fragmentation caused by dams and industrial development, reviving salmon populations and cultural traditions integral to <strong>Salmon People</strong> identity. These community-driven initiatives demonstrate how Indigenous stewardship creates pathways for both species recovery and cultural renewal across British Columbia.</p>
+        </div>
+      </article>
+    </section>
+
+    <div class="closing-note">
+      <strong>Wild Today</strong> is a daily briefing of significant conservation news curated to inform and inspire action for biodiversity, wildlife, and ecosystem protection. Each story is selected for its relevance to conservation science and practice.
+    </div>
+  </main>
+
+  <footer class="footer">
+    <p>&copy; 2026 Wild Tomorrow. All conservation stories sourced from public news and science sources.</p>
+  </footer>
+</body>
+</html>
