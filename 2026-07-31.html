@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wild Today — Daily Conservation Briefing</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Barlow+Condensed:wght@400;600;700&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --crimson:   #7a1a1a;
+      --crimson-lt:#9e2222;
+      --slate:     #4d7c8a;
+      --slate-lt:  #6aa3b5;
+      --near-black:#0d0d0d;
+      --off-white: #f0ece4;
+      --warm-gray: #c8c0b4;
+      --mid-gray:  #4a4540;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--near-black);
+      color: var(--off-white);
+      font-family: 'Barlow', sans-serif;
+      font-weight: 300;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    .masthead {
+      position: relative;
+      border-bottom: 3px solid var(--crimson);
+      padding: 2.5rem 2rem 2rem;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .masthead::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(
+        90deg,
+        transparent,
+        transparent 120px,
+        rgba(122,26,26,0.04) 120px,
+        rgba(122,26,26,0.04) 121px
+      );
+      pointer-events: none;
+    }
+
+    .masthead-left { display: flex; flex-direction: column; gap: 0.2rem; }
+    .masthead-eyebrow {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 600;
+      font-size: 0.7rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--slate-lt);
+    }
+
+    .masthead-title {
+      font-family: 'Playfair Display', serif;
+      font-weight: 900;
+      font-size: clamp(2.8rem, 8vw, 5rem);
+      line-height: 0.95;
+      color: var(--off-white);
+      letter-spacing: -0.02em;
+    }
+
+    .masthead-title span { color: var(--crimson-lt); }
+    .masthead-sub {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 400;
+      font-size: 0.85rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--warm-gray);
+      margin-top: 0.4rem;
+    }
+
+    .masthead-right {
+      text-align: right;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.78rem;
+      color: var(--warm-gray);
+      line-height: 1.8;
+    }
+
+    .content { max-width: 1000px; margin: 0 auto; padding: 0 2rem; }
+
+    .stories { display: flex; flex-direction: column; gap: 3.5rem; padding: 3rem 0; }
+
+    .story {
+      display: grid;
+      grid-template-columns: 3.5rem 1fr;
+      gap: 1.5rem;
+      align-items: flex-start;
+    }
+
+    .story-number {
+      font-family: 'Playfair Display', serif;
+      font-weight: 900;
+      font-size: 4rem;
+      line-height: 1;
+      padding-top: 0.1rem;
+      user-select: none;
+    }
+
+    .story:nth-child(odd) .story-number { color: var(--crimson-lt); }
+    .story:nth-child(even) .story-number { color: var(--slate); }
+
+    .story-body { padding-left: 0.5rem; }
+    .story-tag {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--warm-gray);
+      margin-bottom: 0.5rem;
+    }
+
+    .story-text {
+      font-size: 1.05rem;
+      line-height: 1.75;
+      color: var(--off-white);
+      font-weight: 300;
+    }
+
+    .story-text strong {
+      font-weight: 500;
+      color: #fff;
+    }
+
+    .closing-note {
+      margin-top: 3rem;
+      padding: 2rem;
+      border-left: 3px solid var(--crimson);
+      background: rgba(122,26,26,0.1);
+      font-size: 0.95rem;
+      color: var(--warm-gray);
+      font-style: italic;
+    }
+
+    .footer { padding: 3rem 0; text-align: center; color: var(--warm-gray); font-size: 0.85rem; }
+  </style>
+</head>
+<body>
+  <header class="masthead">
+    <div class="masthead-left">
+      <div class="masthead-eyebrow">Daily Conservation Briefing</div>
+      <h1 class="masthead-title">Wild<span>Today</span></h1>
+      <div class="masthead-sub">Stories That Matter for Our Living World</div>
+    </div>
+    <div class="masthead-right">
+      2026-07-31
+    </div>
+  </header>
+
+  <main class="content">
+    <section class="stories">
+      <article class="story">
+        <div class="story-number">1</div>
+        <div class="story-body">
+          <div class="story-tag">International - Species Health Crisis</div>
+          <h2 style="font-size: 1.3rem; font-weight: 600; color: var(--off-white); margin-bottom: 0.5rem; margin-top: 0;">Bird Flu Spreads into Australian Wildlife as Seven New Cases Detected in Local Seabirds</h2>
+          <p class="story-text"><strong>Seven suspected H5 bird flu cases</strong> have been detected in <strong>greater crested terns</strong> along South Australia's Limestone Coast, marking the first evidence of the virus spreading into local wildlife populations. <strong>BirdLife Australia</strong> experts warn this represents a critical shift from isolated infected arrivals to community transmission, with colonial nesting seabirds creating conditions for rapid viral spread. As spring breeding season approaches, vulnerable seabird colonies and nearby wetlands face unprecedented risk, potentially introducing the <strong>deadly H5N1 virus</strong> to broader ecosystems including <strong>endangered fairy tern populations</strong>. Governments are escalating surveillance efforts, but experts emphasize that local transmission signals Australia is "entering a very different phase" of the outbreak.</p>
+        </div>
+      </article>
+      <article class="story">
+        <div class="story-number">2</div>
+        <div class="story-body">
+          <div class="story-tag">International - Conservation Effectiveness</div>
+          <h2 style="font-size: 1.3rem; font-weight: 600; color: var(--off-white); margin-bottom: 0.5rem; margin-top: 0;">Western Amazon Biosphere Reserves Prevent 7,400 Square Kilometers of Deforestation Through Community Governance</h2>
+          <p class="story-text">A new study by the <strong>Universitat Autònoma de Barcelona</strong> demonstrates that <strong>UNESCO-designated biosphere reserves</strong> across Bolivia, Ecuador, and Peru have prevented the loss of more than 7,400 square kilometers of Amazon forest over two decades. Remarkably, the research found that <strong>transition zones and buffer areas—where conservation coexists with Indigenous territories and rural settlements—proved more effective at preventing deforestation than strictly protected core areas</strong>. <strong>Yasuní Biosphere Reserve</strong> in Ecuador alone prevented an estimated 4,745 square kilometers of forest loss. The findings underscore that effective conservation depends on participatory governance models integrating local communities rather than fortress-style restrictions, offering critical lessons for advancing the <strong>Kunming-Montreal Global Biodiversity Framework</strong>.</p>
+        </div>
+      </article>
+      <article class="story">
+        <div class="story-number">3</div>
+        <div class="story-body">
+          <div class="story-tag">Global - Economic Risk</div>
+          <h2 style="font-size: 1.3rem; font-weight: 600; color: var(--off-white); margin-bottom: 0.5rem; margin-top: 0;">Biodiversity Collapse Could Add $162 Billion Annually to Global Sovereign Debt Costs, Study Warns</h2>
+          <p class="story-text">Researchers at the <strong>University of Sussex</strong> published landmark analysis showing that ecosystem collapse could increase sovereign debt-servicing costs by <strong>$162 billion annually</strong> across 23 countries representing 5.5 billion people, with <strong>China and India</strong> facing additional interest payments of $70 billion and $49 billion respectively. The study examined how losses of <strong>wild pollination, marine fisheries, and tropical timber services</strong> would cascade through financial systems, potentially driving credit rating downgrades and defaulting nations like the <strong>Democratic Republic of Congo, Madagascar, and Bangladesh</strong> unratable. The research reveals a "blind spot" in global financial risk modeling, demonstrating that <strong>as much as $83 trillion of financial assets could be mispriced</strong> due to unaccounted nature-related risks.</p>
+        </div>
+      </article>
+      <article class="story">
+        <div class="story-number">4</div>
+        <div class="story-body">
+          <div class="story-tag">US Policy - Species Protection</div>
+          <h2 style="font-size: 1.3rem; font-weight: 600; color: var(--off-white); margin-bottom: 0.5rem; margin-top: 0;">New US Federal Rules Weaken Endangered Species Protections for Threatened Wildlife</h2>
+          <p class="story-text">The <strong>Trump Administration</strong> finalized significant revisions to <strong>Endangered Species Act</strong> regulations, eliminating the blanket protection rule that previously extended safeguards similar to endangered species to newly listed threatened species. Instead, threatened species now require individual protection plans, dramatically reducing automatic coverage. Conservation groups warn the changes could threaten species including <strong>green sea turtles, Monarch butterflies, and polar bears</strong>, while Florida's <strong>manatee habitat</strong> faces heightened development risk. The shift eliminates the definition of "harm" for threatened species, allowing habitat destruction that falls short of intentional killing. Environmental law experts argue the move represents a fundamental weakening of 50 years of conservation policy, potentially accelerating extinctions across vulnerable populations.</p>
+        </div>
+      </article>
+      <article class="story">
+        <div class="story-number">5</div>
+        <div class="story-body">
+          <div class="story-tag">Indigenous Stewardship - Habitat Recovery</div>
+          <h2 style="font-size: 1.3rem; font-weight: 600; color: var(--off-white); margin-bottom: 0.5rem; margin-top: 0;">Indigenous-Led Salmon Restoration Unites First Nations in Historic Recovery of Canada's Upper Columbia River</h2>
+          <p class="story-text"><strong>First Nations communities</strong> are leading a transformative salmon restoration initiative across <strong>Canada's Upper Columbia River</strong>, combining <strong>traditional ecological knowledge with modern conservation science</strong>. <strong>Shuswap drummers</strong> open ceremonial fry releases reconnecting Indigenous cultural practices with habitat recovery, while collaborative partnerships address decades of fragmentation from dams and industrial development. The effort revives <strong>Pacific salmon populations</strong> integral to the <strong>"Salmon People" cultural identity</strong>, simultaneously restoring both species and ancestral traditions. These community-driven models demonstrate how Indigenous leadership creates pathways for ecological and cultural renewal, offering replicable frameworks for salmon recovery across British Columbia.</p>
+        </div>
+      </article>
+      <article class="story">
+        <div class="story-number">6</div>
+        <div class="story-body">
+          <div class="story-tag">International - Conservation Innovation</div>
+          <h2 style="font-size: 1.3rem; font-weight: 600; color: var(--off-white); margin-bottom: 0.5rem; margin-top: 0;">Costa Rica's Forest Payment Program Achieves Historic Carbon Reduction as Global Model for Conservation Economics</h2>
+          <p class="story-text"><strong>Costa Rica</strong>'s pioneering <strong>forest payment for ecosystem services program</strong> has emerged as a global conservation success, proving that economic incentives for forest protection outperform traditional enforcement approaches. Instead of criminalizing deforestation, the program rewards farmers and landowners for protecting, restoring, and maintaining forests on their land, creating financial motivation aligned with conservation. The model has prevented widespread forest loss while improving rural livelihoods, demonstrating that <strong>paying for nature conservation proves more effective and equitable</strong> than punitive measures alone. As global leaders recognize the urgency of halting deforestation—particularly in tropical regions supplying critical ecosystem services—Costa Rica's approach offers tested methodology for scaling conservation at landscape and international scales.</p>
+        </div>
+      </article>
+      <article class="story">
+        <div class="story-number">7</div>
+        <div class="story-body">
+          <div class="story-tag">Marine - Economic Integration</div>
+          <h2 style="font-size: 1.3rem; font-weight: 600; color: var(--off-white); margin-bottom: 0.5rem; margin-top: 0;">Marine Economic Study Links Ocean Health to Global Financial Stability, Advancing Nature-Risk Assessment</h2>
+          <p class="story-text">New research published in peer-reviewed journals establishes direct connections between marine ecosystem collapse and sovereign financial risk, advancing understanding of how ocean health underpins global economic stability. Scientists examining impacts on <strong>wild pollination, fisheries productivity, and tropical timber</strong> demonstrate that coordinated ecosystem collapse could trigger financial crises comparable to the 2008 subprime mortgage collapse—but with far wider systemic reach. The analysis urges <strong>central banks and financial institutions</strong> to conduct stress tests on bond holdings under future ecological scenarios, integrating nature-related risks into mainstream financial modeling. The work represents a paradigm shift toward viewing <strong>biodiversity loss as a macroeconomic and financial stability issue</strong> rather than purely an environmental concern.</p>
+        </div>
+      </article>
+    </section>
+
+    <div class="closing-note">
+      <strong>Wild Today</strong> is a daily briefing of significant conservation news curated to inform and inspire action for biodiversity, wildlife, and ecosystem protection. Each story is selected for its relevance to conservation science and practice.
+    </div>
+  </main>
+
+  <footer class="footer">
+    <p>&copy; 2026 Wild Tomorrow. All conservation stories sourced from public news and science sources.</p>
+  </footer>
+</body>
+</html>
