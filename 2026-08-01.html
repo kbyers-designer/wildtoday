@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wild Today — August 01, 2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Barlow+Condensed:wght@400;600;700&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --crimson:   #7a1a1a;
+      --crimson-lt:#9e2222;
+      --slate:     #4d7c8a;
+      --slate-lt:  #6aa3b5;
+      --near-black:#0d0d0d;
+      --off-white: #f0ece4;
+      --warm-gray: #c8c0b4;
+      --mid-gray:  #4a4540;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--near-black);
+      color: var(--off-white);
+      font-family: 'Barlow', sans-serif;
+      font-weight: 300;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    .masthead {
+      position: relative;
+      border-bottom: 3px solid var(--crimson);
+      padding: 2.5rem 2rem 2rem;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .masthead::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(
+        90deg,
+        transparent,
+        transparent 120px,
+        rgba(122,26,26,0.04) 120px,
+        rgba(122,26,26,0.04) 121px
+      );
+      pointer-events: none;
+    }
+
+    .masthead-left { display: flex; flex-direction: column; gap: 0.2rem; }
+    .masthead-eyebrow {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 600;
+      font-size: 0.7rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--slate-lt);
+    }
+
+    .masthead-title {
+      font-family: 'Playfair Display', serif;
+      font-weight: 900;
+      font-size: clamp(2.8rem, 8vw, 5rem);
+      line-height: 0.95;
+      color: var(--off-white);
+      letter-spacing: -0.02em;
+    }
+
+    .masthead-title span { color: var(--crimson-lt); }
+    .masthead-sub {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 400;
+      font-size: 0.85rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--warm-gray);
+      margin-top: 0.4rem;
+    }
+
+    .masthead-right {
+      text-align: right;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.78rem;
+      color: var(--warm-gray);
+      line-height: 1.8;
+    }
+
+    .content { max-width: 1000px; margin: 0 auto; padding: 0 2rem; }
+
+    .stories { display: flex; flex-direction: column; gap: 3.5rem; padding: 3rem 0; }
+
+    .story {
+      border-top: 1px solid var(--warm-gray);
+      padding-top: 2.5rem;
+    }
+
+    .story:first-of-type { border-top: none; padding-top: 0; }
+
+    .story-eyebrow {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 600;
+      font-size: 0.65rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--slate-lt);
+      margin-bottom: 0.4rem;
+    }
+
+    .story-title {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: clamp(1.3rem, 4vw, 2rem);
+      line-height: 1.15;
+      color: var(--off-white);
+      margin-bottom: 1rem;
+      letter-spacing: -0.01em;
+    }
+
+    .story-body {
+      font-size: 0.95rem;
+      color: var(--off-white);
+      max-width: 700px;
+      line-height: 1.8;
+    }
+
+    .footer {
+      border-top: 2px solid var(--crimson);
+      margin-top: 4rem;
+      padding: 2rem;
+      text-align: center;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.8rem;
+      color: var(--warm-gray);
+    }
+  </style>
+</head>
+<body>
+  <header class="masthead">
+    <div class="masthead-left">
+      <div class="masthead-eyebrow">Daily conservation briefing</div>
+      <h1 class="masthead-title">Wild <span>Today</span></h1>
+      <div class="masthead-sub">Conservation news that matters</div>
+    </div>
+    <div class="masthead-right">
+      <div>August 01, 2026</div>
+    </div>
+  </header>
+
+  <main class="content">
+    <section class="stories">
+      <article class="story">
+        <div class="story-eyebrow">Story 1</div>
+        <h2 class="story-title">West African Leopards Show Surprising Recovery in Benin National Park</h2>
+        <p class="story-body"><strong>Panthera</strong> and <strong>African Parks</strong> researchers documented a remarkable increase in <strong>endangered West African leopard</strong> density in Benin's Pendjari National Park, rising from 0.62 to 2.08 leopards per 100 km² between 2017 and 2023. This rare conservation success story demonstrates that intensive protection efforts, anti-poaching operations, and habitat restoration can succeed even in conflict-affected regions. With only 354 leopards remaining across West Africa, this population increase offers hope for the species' survival.</p>
+      </article>
+      <article class="story">
+        <div class="story-eyebrow">Story 2</div>
+        <h2 class="story-title">Spiritual Practice Preserves Benin's Critical Mangrove Ecosystems</h2>
+        <p class="story-body">In an innovative blend of tradition and conservation, <strong>Eco-Bénin</strong> partners with <strong>Vodun</strong> spiritual leaders to protect mangrove forests in Benin, using sacred designations through the <strong>Zangbéto deity</strong> to enforce conservation boundaries. Over the past decade, this approach has preserved approximately 500 hectares of mangroves, which are vital carbon sinks capturing up to four times more carbon than terrestrial forests. The <strong>Beninese government</strong> now officially recognizes this traditional framework as complementary to national environmental strategy.</p>
+      </article>
+      <article class="story">
+        <div class="story-eyebrow">Story 3</div>
+        <h2 class="story-title">Drifting Fishing Gear Threatens Half the World's Marine Protected Areas</h2>
+        <p class="story-body">A comprehensive global study in <strong>Science Advances</strong> reveals that drifting fish aggregating devices (dFADs) from industrial <strong>tuna fleets</strong> impact more than half of the world's protected marine areas, with at least 6,324 strandings documented across 174 protected areas. These abandoned devices, which can travel thousands of kilometers, entangle sharks, turtles, and damage coral reefs. <strong>Researchers call for stronger regulations</strong> including annual deployment caps, better tracking, and mandatory device retrieval to prevent further ecological damage.</p>
+      </article>
+      <article class="story">
+        <div class="story-eyebrow">Story 4</div>
+        <h2 class="story-title">UK Urban Conservation: Butterflies Thrive in City Center Meadow</h2>
+        <p class="story-body"><strong>Hull Butterfly City</strong> has successfully established ten butterfly species, including the rare <strong>small skipper butterfly</strong> breeding population, in a managed meadow surrounded by office blocks and shopping centers. The initiative demonstrates how strategic habitat restoration—allowing grasses to grow uncut through winter for caterpillar overwinter sites—can create biodiversity hotspots in urban environments. <strong>Land Registry staff</strong> report the project generates excitement and engagement throughout the office community.</p>
+      </article>
+      <article class="story">
+        <div class="story-eyebrow">Story 5</div>
+        <h2 class="story-title">RSPB Reconnects Fragmented Welsh Habitats with Historic Land Purchase</h2>
+        <p class="story-body">The <strong>Royal Society for the Protection of Birds (RSPB)</strong> purchased 96 hectares in Carmarthenshire, Wales, creating the first reconnection of the <strong>Gwenffrwd-Dinas nature reserve</strong> in 60 years. The 'vital missing link' at Gallt-y-bere will restore habitat corridors for vulnerable species including <strong>pied flycatchers</strong>, <strong>hen harriers</strong>, and <strong>wood warblers</strong>, while protecting rare <strong>Atlantic oak woodlands</strong> and ancient peat bogs. The purchase was made possible through philanthropic support and demonstrates the value of strategic land acquisition for landscape-scale conservation.</p>
+      </article>
+      <article class="story">
+        <div class="story-eyebrow">Story 6</div>
+        <h2 class="story-title">Super El Niño Threatens India's Monsoon and Global Climate Stability</h2>
+        <p class="story-body"><strong>UN Secretary-General António Guterres</strong> warned that a strengthening El Niño system—with <strong>record Pacific water temperatures</strong> unprecedented this early in the cycle—is "adding fuel to a planet already on fire." The <strong>World Meteorological Organization</strong> forecasts below-normal rainfall across the Indian Ocean basin, threatening India's critical monsoon season and increasing risks of severe drought, wildfires, and floods. Scientists warn the climate crisis has supercharged this El Niño, pushing the world into "uncharted territory."</p>
+      </article>
+      <article class="story">
+        <div class="story-eyebrow">Story 7</div>
+        <h2 class="story-title">Mennonite Land Consolidation Accelerates Belize Deforestation Crisis</h2>
+        <p class="story-body">An investigation by <strong>Mongabay</strong> reveals how <strong>Mennonite communities</strong> in Belize use corporate trust structures and community credit unions to rapidly acquire and clear vast tracts of rainforest, outbidding conservation groups and small farmers. Since 2001, Belize has lost over 350,000 hectares of forest—20% of its cover—with Mennonite expansion a major driver. The documentary analysis shows how collective land management, combined with internal financing mechanisms, gives these communities substantial advantages in acquiring land for agricultural expansion.</p>
+      </article>
+      <article class="story">
+        <div class="story-eyebrow">Story 8</div>
+        <h2 class="story-title">Invasive Asian Hornets: Guernsey's Track-Not-Trample Strategy Shows Results</h2>
+        <p class="story-body"><strong>Guernsey authorities</strong> report success with their innovative 'Track Don't Trample' strategy, which asks islanders to document and report sightings of <strong>invasive Asian hornets</strong> rather than kill them, enabling precise targeting of primary nests. This year, volunteers helped capture 205 Asian hornet queens and destroy nine primary nests. The approach protects public health while preserving biodiversity, as the colony can expand to 2,000 hornets per nest during peak season. <strong>Invasive species officers</strong> emphasize the critical role of community engagement in managing this transnational pest threat.</p>
+      </article>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>Wild Today — Daily Conservation Briefing</p>
+    <p>Published August 01, 2026 | <a href="https://briefing.wild-tomorrow.com/" style="color: var(--slate-lt); text-decoration: none;">View archive</a></p>
+  </footer>
+</body>
+</html>
