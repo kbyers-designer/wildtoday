@@ -8,44 +8,403 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Barlow+Condensed:wght@400;600;700&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet" />
   <style>
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 40px 20px;
-            background-color: #fafafa;
-            color: #333;
-        }
-        h1 {
-            color: #1a472a;
-            border-bottom: 3px solid #2d8659;
-            padding-bottom: 10px;
-            margin-bottom: 30px;
-        }
-        .archive {
-            background-color: white;
-            padding: 20px;
-            border-radius: 4px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-        }
-        .month {
-            margin-bottom: 20px;
-            padding-bottom: 20px;
-            border-bottom: 1px solid #eee;
-        }
-        .month:last-child {
-            border-bottom: none;
-        }
-        .month h2 {
-            color: #1a472a;
-            font-size: 1.2em;
-            margin: 0 0 10px 0;
-        }
-        .edition-count {
-            color: #888;
-            font-size: 0.95em;
-        }
-    </style>
+    :root {
+      --crimson:   #7a1a1a;
+      --crimson-lt:#9e2222;
+      --slate:     #4d7c8a;
+      --slate-lt:  #6aa3b5;
+      --near-black:#0d0d0d;
+      --off-white: #f0ece4;
+      --warm-gray: #c8c0b4;
+      --mid-gray:  #4a4540;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--near-black);
+      color: var(--off-white);
+      font-family: 'Barlow', sans-serif;
+      font-weight: 300;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* ── MASTHEAD ── */
+    .masthead {
+      position: relative;
+      border-bottom: 3px solid var(--crimson);
+      padding: 2.5rem 2rem 2rem;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .masthead::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(
+        90deg,
+        transparent,
+        transparent 120px,
+        rgba(122,26,26,0.04) 120px,
+        rgba(122,26,26,0.04) 121px
+      );
+      pointer-events: none;
+    }
+
+    .masthead-left { display: flex; flex-direction: column; gap: 0.2rem; }
+
+    .masthead-eyebrow {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 600;
+      font-size: 0.7rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--slate-lt);
+    }
+
+    .masthead-title {
+      font-family: 'Playfair Display', serif;
+      font-weight: 900;
+      font-size: clamp(2.8rem, 8vw, 5rem);
+      line-height: 0.95;
+      color: var(--off-white);
+      letter-spacing: -0.02em;
+    }
+
+    .masthead-title span {
+      color: var(--crimson-lt);
+    }
+
+    .masthead-sub {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 400;
+      font-size: 0.85rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--warm-gray);
+      margin-top: 0.4rem;
+    }
+
+    .masthead-right {
+      text-align: right;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.78rem;
+      color: var(--warm-gray);
+      line-height: 1.8;
+    }
+
+    .masthead-right a {
+      color: var(--slate-lt);
+      text-decoration: none;
+    }
+
+    .masthead-right a:hover { text-decoration: underline; }
+
+    /* ── DATE BANNER ── */
+    .date-banner {
+      background: var(--crimson);
+      padding: 0.6rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .date-banner-date {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 0.8rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+    }
+
+    .date-banner-tag {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(240,236,228,0.7);
+    }
+
+    /* ── LAYOUT ── */
+    .site-wrapper {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    /* ── BRIEFING SECTION ── */
+    .briefing-section {
+      padding: 4rem 0;
+    }
+
+    .section-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 600;
+      font-size: 0.7rem;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--slate-lt);
+      margin-bottom: 2.5rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .section-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--mid-gray);
+    }
+
+    /* ── STORY CARDS ── */
+    .stories {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .story {
+      display: grid;
+      grid-template-columns: 80px 1fr;
+      gap: 0;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+      padding: 2.2rem 0;
+      opacity: 0;
+      transform: translateY(24px);
+      animation: fadeUp 0.5s ease forwards;
+    }
+
+    .story:nth-child(1)  { animation-delay: 0.05s; }
+    .story:nth-child(2)  { animation-delay: 0.10s; }
+    .story:nth-child(3)  { animation-delay: 0.15s; }
+    .story:nth-child(4)  { animation-delay: 0.20s; }
+    .story:nth-child(5)  { animation-delay: 0.25s; }
+    .story:nth-child(6)  { animation-delay: 0.30s; }
+    .story:nth-child(7)  { animation-delay: 0.35s; }
+    .story:nth-child(8)  { animation-delay: 0.40s; }
+
+    @keyframes fadeUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .story-number {
+      font-family: 'Playfair Display', serif;
+      font-weight: 900;
+      font-size: 4rem;
+      line-height: 1;
+      padding-top: 0.1rem;
+      user-select: none;
+      transition: color 0.2s;
+    }
+
+    /* alternating number colors to match your social cards */
+    .story:nth-child(odd)  .story-number { color: var(--crimson-lt); }
+    .story:nth-child(even) .story-number { color: var(--slate); }
+
+    .story:hover .story-number { opacity: 0.6; }
+
+    .story-body { padding-left: 0.5rem; }
+
+    .story-tag {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--warm-gray);
+      margin-bottom: 0.5rem;
+    }
+
+    .story-text {
+      font-size: 1.05rem;
+      line-height: 1.75;
+      color: var(--off-white);
+      font-weight: 300;
+    }
+
+    .story-text strong {
+      font-weight: 500;
+      color: #fff;
+    }
+
+    /* ── CLOSING NOTE ── */
+    .closing-note {
+      margin-top: 3rem;
+      padding: 2rem;
+      border-left: 3px solid var(--crimson);
+      background: rgba(122,26,26,0.1);
+      font-size: 0.95rem;
+      color: var(--warm-gray);
+      font-style: italic;
+    }
+
+    .closing-note a {
+      color: var(--slate-lt);
+      text-decoration: none;
+    }
+
+    .closing-note a:hover { text-decoration: underline; }
+
+    /* ── DIVIDER ── */
+    .section-divider {
+      border: none;
+      border-top: 1px solid var(--mid-gray);
+      margin: 0;
+    }
+
+    /* ── ARCHIVE ── */
+    .archive-section {
+      padding: 3.5rem 0 5rem;
+    }
+
+    .archive-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1px;
+      background: var(--mid-gray);
+      border: 1px solid var(--mid-gray);
+    }
+
+    .archive-item {
+      background: var(--near-black);
+      padding: 1.4rem 1.6rem;
+      text-decoration: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+      transition: background 0.18s;
+    }
+
+    .archive-item:hover { background: #1a1614; }
+
+    .archive-item-date {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.68rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--warm-gray);
+    }
+
+    .archive-item-count {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: 1.6rem;
+      color: var(--crimson-lt);
+      line-height: 1;
+    }
+
+    .archive-item-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.75rem;
+      color: var(--warm-gray);
+      letter-spacing: 0.05em;
+    }
+
+    .archive-cta {
+      margin-top: 2rem;
+      text-align: center;
+    }
+
+    .btn {
+      display: inline-block;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 0.78rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      padding: 0.85rem 2.2rem;
+      text-decoration: none;
+      transition: all 0.18s;
+      cursor: pointer;
+      border: none;
+    }
+
+    .btn-crimson {
+      background: var(--crimson);
+      color: var(--off-white);
+    }
+
+    .btn-crimson:hover { background: var(--crimson-lt); }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--off-white);
+      border: 1px solid var(--mid-gray);
+    }
+
+    .btn-outline:hover {
+      border-color: var(--slate-lt);
+      color: var(--slate-lt);
+    }
+
+.subscription-wrapper iframe {
+  display: block;
+}
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--mid-gray);
+      padding: 2.5rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .footer-brand {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: 1.1rem;
+    }
+
+    .footer-brand span { color: var(--crimson-lt); }
+
+    .footer-links {
+      display: flex;
+      gap: 1.8rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--warm-gray);
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+
+    .footer-links a:hover { color: var(--slate-lt); }
+
+    .footer-copy {
+      font-size: 0.72rem;
+      color: var(--mid-gray);
+      font-family: 'Barlow Condensed', sans-serif;
+      letter-spacing: 0.08em;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 600px) {
+      .story { grid-template-columns: 56px 1fr; }
+      .story-number { font-size: 2.8rem; }
+      .masthead { padding: 1.8rem 1.2rem 1.5rem; }
+      .date-banner { padding: 0.5rem 1.2rem; }
+      footer { flex-direction: column; gap: 1rem; }
+    }
+  </style>
 </head>
 <body>
 
@@ -75,64 +434,64 @@
     <article class="story">
       <div class="story-number">1</div>
       <div class="story-body">
-        <div class="story-tag">Mongabay: Conservation and environmental science news</div>
-        <p class="story-text"># In-depth feature stories reveal context and insight. [Adam Falk at Jahoo Gibbon Camp within Keo Seima Sanctuary in Cambodia. Photo courtesy of <strong>WCS</strong></p>
+        <div class="story-tag">Amazon Deforestation at Decade Low</div>
+        <p class="story-text"><strong>Brazil's</strong> Amazon deforestation has fallen to its lowest level in a decade under President <strong>Lula's</strong> conservation policies, with <strong>INPE</strong> reporting an 89% drop compared to 2021 peak rates. The milestone is being celebrated by environmental groups as proof that <strong>political will</strong> can reverse forest loss at scale.</p>
       </div>
     </article>
 
     <article class="story">
       <div class="story-number">2</div>
       <div class="story-body">
-        <div class="story-tag">From the Field</div>
-        <p class="story-text">- English - Español # From the Field ## Stories of international <strong>conservation</strong>. [\ \ August 19, 2026\ \ To save the reef, this island is raising clams by hand \ \ OCEANS\ \ 6 min]. [\ \ August 12, 2026\ \ What on Earth is ‘eDNA’</p>
+        <div class="story-tag">Trump Administration Weakens Endangered Species Act</div>
+        <p class="story-text">The <strong>U.S. Fish & Wildlife Service</strong> has finalized rules narrowing the definition of <strong>critical habitat</strong> under the <strong>Endangered Species Act</strong>, limiting protections for unoccupied land that species need for recovery. Conservation groups including <strong>Earthjustice</strong> have filed legal challenges, warning the change could doom dozens of species to extinction.</p>
       </div>
     </article>
 
     <article class="story">
       <div class="story-number">3</div>
       <div class="story-body">
-        <div class="story-tag">Latest</div>
-        <p class="story-text">[ Lasting <strong>conservation</strong> starts with communities defining priorities and shaping solutions that work for people and nature alike. \ \ _06 Aug 2026_ \ \ Putting communities at the heart of <strong>conservation</strong>\ \ A more effective future for <strong>conservation</strong> begins by recognising and championing community leadership. [ Olive Ridley sea turtle hatchlings on Dipolog City’s shoreline</p>
+        <div class="story-tag">Bird Flu Confirmed in Australia's Little Penguins</div>
+        <p class="story-text"><strong>H5N1 avian influenza</strong> has been confirmed for the first time in <strong>little penguins</strong> off the coast of Australia, raising alarm among wildlife managers. Scientists with the <strong>Australian Antarctic Division</strong> are monitoring colonies closely, fearing the virus could devastate seabird populations as it has in other parts of the world.</p>
       </div>
     </article>
 
     <article class="story">
       <div class="story-number">4</div>
       <div class="story-body">
-        <div class="story-tag">Conservation</div>
-        <p class="story-text">## August 2026 ### Are you part of a community <strong>environmental</strong> action group. We’d like to hear about your experience 1 2 3 4</p>
+        <div class="story-tag">Hawaiian Monk Seal Lost to Fishing Gear</div>
+        <p class="story-text">An endangered <strong>Hawaiian monk seal</strong> — one of fewer than 1,600 remaining — was found dead entangled in fishing net off Oahu, the <strong>NOAA</strong> confirmed. The species, found nowhere else on Earth, loses an estimated 5–7 individuals annually to <strong>bycatch</strong> and entanglement.</p>
       </div>
     </article>
 
     <article class="story">
       <div class="story-number">5</div>
       <div class="story-body">
-        <div class="story-tag">News & Insights</div>
-        <p class="story-text">[A river flows through a valley in Nome, Alaska, surrounded by mountains, highlighting a protected <strong>wildlife</strong> <strong>habitat</strong>. \ \ News\ |\ June 25, 2026\ \ \ Critical Stretch of Nome River Protected: Alaska Arctic <strong>Wildlife</strong> <strong>Habitat</strong> Conserv. [In Gardiner, Montana, a bison and its calf roam a field, representing the ecological significance of the Greater Yellowstone area</p>
+        <div class="story-tag">Blue and Fin Whales Recovering in Atlantic</div>
+        <p class="story-text"><strong>Blue whales</strong> and <strong>fin whales</strong> are returning to parts of the North Atlantic where commercial whaling decimated them a century ago, according to a new study in <strong>Marine Mammal Science</strong>. Researchers attribute the recovery to international whaling bans, though scientists warn <strong>climate-driven prey shifts</strong> remain a long-term threat.</p>
       </div>
     </article>
 
     <article class="story">
       <div class="story-number">6</div>
       <div class="story-body">
-        <div class="story-tag">Conservation</div>
-        <p class="story-text"># <strong>Conservation</strong> 1 day ago\ \. [A large white cow with horns licks its lips while standing in a sunny field. Flies are flying around its face</p>
+        <div class="story-tag">Wildlife Crossings Saving Desert Bighorn Sheep in Arizona</div>
+        <p class="story-text">A series of <strong>wildlife crossing structures</strong> installed along Arizona highways has helped reconnect fragmented <strong>desert bighorn sheep</strong> populations, with GPS tracking showing animals actively using the passages. The <strong>Arizona Game and Fish Department</strong> reports a measurable uptick in gene flow between previously isolated herds.</p>
       </div>
     </article>
 
     <article class="story">
       <div class="story-number">7</div>
       <div class="story-body">
-        <div class="story-tag">Biodiversity</div>
-        <p class="story-text"># <strong>Biodiversity</strong> ## Overview This includes diversity within <strong>species</strong>, between <strong>species</strong> and across ecosystems, representing the genetic makeup of plants, animals, microorganisms and the complexity of ecosystems. Healthy communities are sustained by well-functioning ecosystems, which provide critical services such as clean air, fresh water, natural medicines and food security. These ecosystems also regulate diseases and help stabilize the <strong>climate</strong></p>
+        <div class="story-tag">European Marine Protected Areas Under Legal Scrutiny</div>
+        <p class="story-text">A coalition of <strong>European environmental law groups</strong> is challenging member states that have designated <strong>marine protected areas</strong> on paper but continue to allow bottom trawling within them. The legal push, backed by <strong>ClientEarth</strong>, argues that <strong>EU Habitats Directive</strong> obligations are being systematically violated.</p>
       </div>
     </article>
 
     <article class="story">
       <div class="story-number">8</div>
       <div class="story-body">
-        <div class="story-tag">What Is Biodiversity?</div>
-        <p class="story-text">## Key takeaways - <strong>Biodiversity</strong>’s role: It keeps ecosystems stable and resilient, supporting food, water, clean air, medicine, and <strong>protection</strong> from natural disasters. ## <strong>Biodiversity</strong> protects our future All <strong>species</strong> and organisms in an <strong>ecosystem</strong> work together, like an intricate web, to maintain balance and support life. Everything in nature is connected and plays a role in keeping our ecosystems healthy and functioning</p>
+        <div class="story-tag">Habitat Protection — Not Rescue — Key to Orangutan Survival</div>
+        <p class="story-text">A sweeping new analysis in <strong>Nature Sustainability</strong> finds that <strong>rescue-and-release programs</strong> for <strong>Bornean orangutans</strong> have minimal impact on population viability without simultaneous <strong>forest protection</strong>. Researchers recommend redirecting conservation funding toward halting <strong>deforestation</strong> rather than individual animal rehabilitation.</p>
       </div>
     </article>
 
